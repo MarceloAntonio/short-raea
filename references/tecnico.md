@@ -102,3 +102,8 @@ Capa, legenda e hashtags: `references/publicacao.md`.
 - **Emoji da mesma cor do fundo**: o ❓ da Noto é vermelho e sumiu dentro de uma pílula vermelha. Em fundo colorido, use texto ("?") em vez do emoji.
 - **Texto ao lado de uma barra que cresce**: calcule a largura da barra máxima mais o texto mais longo de todos os idiomas, e ponha `whiteSpace: "nowrap"` no texto.
 - **Mudar o cenário sem quebrar a história**: as cenas dependem da posição de algumas peças (a mesa do protagonista, a porta por onde ele sai, a parede do relógio, o servidor que dá alarme). Ao trocar o layout, mantenha essas âncoras nos mesmos lugares (desloque o layout novo inteiro, se for preciso) e atualize no roteiro só as que mudarem de lugar. Depois confira um quadro de cada cena que usa uma âncora.
+- **Faces no mesmo plano piscam (z-fighting)**: no vídeo do vazamento, o cliente viu portas, vitrines e batentes "piscando". Eram peças encostadas com faces coincidentes (vitrine e porta da loja na mesma profundidade e sobrepostas; porta, batente e vão da fachada com a mesma borda). Deixe 1 a 2 cm de folga ou sobreposição clara entre peças que se tocam, e confira de perto (recorte o quadro) toda porta, janela e placa.
+- **Objeto que gira não pode encostar na parede**: a cópia da chave continuava girando pendurada no quadro e metade entrava na parede. Quando o objeto pousa, pare a rotação.
+- **Cabelo com furos**: esfera achatada de det 1 sobre a cabeça deixa vértices da cabeça aparecendo. Use det 2 e raio um pouco maior que a cabeça.
+- **Peças iguais acesas e apagadas**: ponha o emissive no nome da malha, senão as duas dividem o material.
+
