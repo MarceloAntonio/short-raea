@@ -19,10 +19,10 @@ Faça um **grill me** com a ferramenta `AskUserQuestion`, nunca com uma lista de
 
 1. **Tema**: sobre o que é o vídeo?
 2. **Marca**: de quem é? Site (para cores e fontes) e onde estão os logos.
-3. **Objetivo**: o que a pessoa deve fazer ou pensar no fim? (seguir, chamar no WhatsApp, comentar, salvar)
+3. **Objetivo**: o que a pessoa deve fazer no fim? (seguir, comentar, enviar, salvar, chamar no WhatsApp). Escolha **uma** ação principal e construa o vídeo para ela: perfil pequeno precisa primeiro de seguidor e comentário, não de venda.
 4. **Público**: quem assiste? (dono de empresa leigo, dev, estudante...)
 5. **Fatos**: quais números, selos e promessas posso afirmar? O que não estiver nessa lista não entra: um dado inventado num vídeo de marca vira problema real para o cliente.
-6. **Duração**: o padrão é 30 a 55 s, nunca mais de 60 s.
+6. **Duração**: o padrão é 30 a 40 s, nunca mais de 60 s. O vídeo da Graal de 63 s teve tempo médio de 24 s: só 1 em cada 3 pessoas chegou à virada (`references/publicacao.md`, seção 6).
 7. **CTA**: o texto exato do fechamento (@, site, WhatsApp, "link na bio").
 
 Se a marca já tem projeto num workspace do raea (`~/Documentos/raea/`), leia o `brief.ts` e o `AGENTS.md` dele e pergunte só o que faltar.
@@ -35,7 +35,7 @@ Se a marca já tem projeto num workspace do raea (`~/Documentos/raea/`), leia o 
 
 ## Fase 3. Roteiro
 
-1. Escreva a narração por passo: fala curta, português do Brasil coloquial, sem cara de anúncio. Calcule o tempo (com o Liam a 1,15, são cerca de 3 palavras por segundo: 70 palavras dão uns 26 s e 120 dão uns 42 s, sem contar as pausas; medido em 17/11/2026). **Espere aprovação.**
+1. Escreva a narração por passo: fala curta, português do Brasil coloquial, sem cara de anúncio. Mire em **80 a 110 palavras no total** (30 a 40 s). Nenhum passo passa de 8 s de fala: lista falada ("salário, encargos, férias, décimo terceiro…") é onde a retenção mais cai; troque a lista por uma frase de impacto e deixe a imagem mostrar o resto. Calcule o tempo (com o Liam a 1,15, são cerca de 3 palavras por segundo: 70 palavras dão uns 26 s e 120 dão uns 42 s, sem contar as pausas; medido em 17/11/2026). **Espere aprovação.**
 2. Monte um `roteiro.json` que controla o vídeo inteiro: passos, narração, elementos, câmera, overlays, efeitos sonoros e CTA. Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: assim, quando a voz muda, tudo continua no lugar.
 3. Modelo de **estrutura** (não de conteúdo): `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`, `scripts/gerar-audio.ts`, `scripts/baixar-sons.ts`) e o porte para o raea em `~/Documentos/raea/graal/projects/terceirizar-ti` (no Windows, `~/projetos/graal/projects/terceirizar-ti`, que também tem `ferramentas/narrar.py` e `ferramentas/idiomas.py`). Copie o encanamento (linha do tempo, deixas por palavra, legendas, `emo()`, fontes); invente as cenas do zero.
 4. Se o vídeo vai sair em mais de um idioma, escreva o roteiro já sabendo disso: deixas em palavras que existem nos outros idiomas e nenhuma palavra repetida na mesma fala (`references/tecnico.md`, seção 8).
@@ -55,6 +55,8 @@ Faça a verificação da referência: check rápido, folha de quadros-chave (olh
 
 Depois:
 - Ofereça a **capa** (HTML com a cena 3D do vídeo de fundo, salva em `out/` ao lado do vídeo) e a **legenda com 5 hashtags**, seguindo `references/publicacao.md`. A chamada da legenda é a mesma do fim do vídeo, nunca uma nova.
+- Lembre o usuário de **escolher a capa** ao postar (o Reel da Graal saiu com a tela final do CTA de miniatura, e a grade ficou com cara de anúncio) e de **fixar um comentário** com a pergunta do vídeo.
+- Peça os prints dos insights depois de 24 a 48 h e analise com a seção 6 de `references/publicacao.md`; registre o resultado no histórico.
 - Acrescente a linha do vídeo ao `HISTORICO-SHORTS.md`; é ela que garante que o próximo será diferente.
 - Apague renders intermediários e testes; ficam o original final e a cópia de entrega.
 - Registre armadilhas novas na seção `## Regressões` do `AGENTS.md` do projeto.
@@ -72,6 +74,7 @@ O cliente quase sempre volta com uma lista ("mais peso no custo", "mostrar a cer
 
 ## Regras que valem o tempo todo
 
+- **Engajamento (aprendido com os insights da Graal, 19/11/2026)**: o vídeo precisa **pedir** a ação que quer, dentro do vídeo e não só na legenda. Cada ação tem um gatilho próprio: comentário = pergunta com resposta de uma palavra ou número; envio = um momento "isso é a gente" que a pessoa manda para o chefe ou o sócio; salvamento = algo útil para guardar (checklist, conta, número); seguir = promessa de continuação (série, "parte 2"). A marca e a solução aparecem antes dos 20 s. O CTA final dura no máximo 2 a 3 s e emenda no loop. Detalhes em `references/publicacao.md`, seção 6.
 - **Retenção**: conflito no primeiro 1,5 s; alguma mudança a cada 2 a 4 s; uma metáfora visual central que volta; a virada transforma a mesma imagem do problema; o último quadro encaixa no primeiro para o replay parecer contínuo.
 - **Verdade**: só os fatos da fase 1; na dúvida, suavize ou pergunte. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA.
 - **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do próprio serviço. Nunca imprima o conteúdo desses arquivos. Se a chave estiver em outro lugar, pergunte onde; não procure arquivos de chave pelo disco.

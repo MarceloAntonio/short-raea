@@ -8,6 +8,7 @@ Leia na fase 5, depois da entrega do vídeo. Um perfil pequeno depende mais da c
 3. Hashtags
 4. Capa
 5. Outros recursos para perfil pequeno
+6. Ler os insights e o que já aprendemos
 
 ## 1. O que o Instagram mede
 
@@ -57,3 +58,33 @@ A capa é feita em HTML e fotografada com o Chrome sem janela. Fica em `out/capa
 - **Post em parceria (Collab)**: o Reel aparece também no perfil do parceiro ou cliente convidado.
 - **Campo de nome do perfil** com o serviço ("Suporte de TI para empresas"): é ali que a busca procura, não só na bio.
 - **Texto na capa e na tela** com as palavras que o cliente buscaria.
+
+## 6. Ler os insights e o que já aprendemos
+
+Peça ao usuário os prints de "Insights do reel" (visão geral, gráfico de retenção, "o que afeta suas visualizações") 24 a 48 h depois de postar. Cruze a curva de retenção com o início de cada passo (some `duracao` de `narracao.json` + `pausaEntrePassosSeg` por passo) para saber **qual trecho** perdeu gente, e leia cada taxa como resposta a uma pergunta: o vídeo deu motivo para essa ação?
+
+### Caso Graal, terceirizar suporte de TI (v7, 63 s, perfil com 31 seguidores, 19 h)
+
+| Métrica | Valor | Leitura |
+|---|---|---|
+| Visualizações / contas | 1.923 / 1.648 | 90 % da aba Reels (não seguidores). Pico entre 5 e 9 h depois de postar |
+| Reels pulados | 35,5 % | Gancho bom: 65 % passaram dos 3 s |
+| Tempo médio | 24 s (38 %) | Vídeo longo para o que entrega |
+| Curtidas | 6,1 % | Alta: dor reconhecível, visual 3D agrada |
+| Salvamentos | 0,7 % | Nada útil para guardar |
+| Envios | 0,5 % | Nenhum momento "manda pro chefe" |
+| Comentários | 0,1 % | O vídeo não pergunta nada |
+| Seguidores ganhos | 1 | Termina como anúncio, sem promessa de mais |
+
+Retenção por trecho: gancho 100 → 68 %; **custo (16,8 s de lista falada) 68 → 48 %, a maior perda**; três problemas seguidos 48 → 37 %; virada com a marca aos 39 s, vista por ~37 %; CTA de 6 s parado, 25 → 5 %.
+
+### Regras que saíram daí
+
+1. **30 a 40 s.** Nenhum passo com mais de 8 s de fala. Problemas parecidos viram um passo só.
+2. **Marca e solução antes dos 20 s.** Quem não vê a marca não tem o que seguir.
+3. **Comentário: pergunta no vídeo, com resposta de um toque.** Narrada e escrita na tela, perto do fim ("Quando a TI cai aí, quem resolve? 1, 2 ou 3?"). Fixe um comentário com a mesma pergunta assim que postar. Continua valendo a regra da seção 2: a legenda só repete o que o vídeo pede.
+4. **Envio: um momento de identificação.** Uma cena ou frase que a pessoa reconhece da própria empresa ("o sobrinho que entende de computador"), com humor. Tom institucional não é enviado.
+5. **Salvamento: algo para consultar depois.** Um quadro de 2 a 3 s com checklist, conta ou número.
+6. **Seguir: promessa de continuação.** Série com nome e número ("TI sem enrolação #1") e um final que anuncia o próximo. Venda ("fala com a gente, link na bio") fica para a legenda e para poucos vídeos.
+7. **CTA de 2 a 3 s**, emendando no loop. Tela final parada é deslize.
+8. **Capa escolhida na hora de postar.** Sem isso, o Instagram pega um quadro qualquer (aqui, a tela do CTA) e a grade parece anúncio.

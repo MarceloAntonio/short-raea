@@ -11,3 +11,7 @@ Cada vídeo novo precisa diferir do anterior em pelo menos 4 das 7 colunas.
 ## Revisões (o mesmo vídeo, não contam como formato novo)
 
 - **2026-11-18/19, Graal, terceirizar suporte de TI (v4 a v7)**: fala do custo mais longa ("especialista custa caro", "depender de uma pessoa só") com barras salário × custo real; certificação ISO 27001 e 27701 na fala da virada, no checklist e num selo; escritório trocado pelo layout 5.5 escolhido pelo cliente entre 10 propostas em imagem (pods de três em volta de um vaso, sala de reunião de vidro com telão, sofá e pufes, piso azul-marinho, divisórias laranja); cabelos variados nos personagens; versões em espanhol e inglês; pronúncia de "Graal" corrigida só no texto enviado à voz; capa em HTML e legenda com 5 hashtags. Duração subiu de 53 para 63 s.
+
+## Resultados (insights do Instagram)
+
+- **Graal, terceirizar suporte de TI, v7 (63 s), 19 h depois de postar**: 1.923 visualizações (90 % da aba Reels), 35,5 % pulados, tempo médio 24 s, 100 curtidas (6,1 %), 12 salvamentos, 8 envios, 1 comentário, 1 seguidor. Maior perda no passo do custo (lista de 17 s). Próximo vídeo: 30 a 40 s, pergunta para comentar, série para seguir. Análise em `references/publicacao.md`, seção 6.

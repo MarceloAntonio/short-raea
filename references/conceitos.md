@@ -17,6 +17,14 @@ Um motor é a ideia que move o vídeo inteiro. Bons motores criam uma pergunta n
 - **Ponto de vista inesperado**: a cena vista pelo ladrão, pela impressora, pelo cliente do cliente.
 - **Comparação absurda**: o problema técnico explicado como algo do dia a dia (backup como estepe, firewall como porteiro).
 
+## Formatos que puxam ação (combine com um motor)
+
+- **Série numerada**: "Parte 1 de 3" ou "TI sem enrolação #2"; o final anuncia o próximo e dá motivo para seguir.
+- **Enquete de um toque**: o vídeo para numa pergunta com 2 ou 3 opções numeradas; a pessoa comenta o número.
+- **Teste/diagnóstico**: "Se você responder sim a 2 destas, sua empresa está em risco"; puxa salvamento e envio.
+- **Mito ou verdade**: afirmações que o público repete, desmontadas uma a uma; gera discordância nos comentários.
+- **Cena de identificação**: a situação que todo funcionário já viveu, com humor; é o vídeo que se manda para o colega.
+
 ## Clichês proibidos (a menos que o usuário peça)
 
 Eles fazem o vídeo parecer igual a mil outros, e quem rola o feed reconhece em meio segundo.
