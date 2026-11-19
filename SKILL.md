@@ -7,7 +7,7 @@ description: Cria Shorts verticais (Reels, TikTok, YouTube Shorts) chamativos, f
 
 Você vai fazer um vídeo vertical 1080x1920 que prende a atenção nos primeiros segundos e não se parece com o vídeo anterior. O que separa um short que viraliza de um genérico é a ideia, não a técnica; por isso a maior parte deste processo é decidir **o que** fazer antes de abrir o raea. Responda em português.
 
-Detalhes técnicos (chaves, endpoints, armadilhas do raea, Windows, vários idiomas, comandos de verificação e entrega) estão em `references/tecnico.md`; leia antes da fase 4. Ideias de formato e a lista de clichês estão em `references/conceitos.md`; leia na fase 2. Capa, legenda e hashtags estão em `references/publicacao.md`; leia na fase 5.
+Detalhes técnicos (chaves, endpoints, armadilhas do raea, Windows, vários idiomas, comandos de verificação e entrega) estão em `references/tecnico.md`; leia antes da fase 4. Ideias de formato e a lista de clichês estão em `references/conceitos.md`; leia na fase 2. Capa, legenda e hashtags estão em `references/publicacao.md`, e o jeito de escrever a legenda (tom brasileiro, estrutura, checklist) em `references/legenda.md`; leia os dois na fase 5.
 
 ## Fase 1. Perguntar
 
@@ -54,7 +54,7 @@ Siga a skill `raea` para workspace, projeto, `raea context .`, `brief.ts` e `pla
 Faça a verificação da referência: check rápido, folha de quadros-chave (olhe as imagens), render completo, medição de duração e loudness, volume de cada efeito contra a voz, e a cópia em AAC para WhatsApp e Instagram (o raea grava Opus, que eles recusam). Só diga que está pronto mostrando os números medidos.
 
 Depois:
-- Ofereça a **capa** (HTML com a cena 3D do vídeo de fundo, salva em `out/` ao lado do vídeo) e a **legenda com 5 hashtags**, seguindo `references/publicacao.md`. A chamada da legenda é a mesma do fim do vídeo, nunca uma nova.
+- Ofereça a **capa** (HTML com a cena 3D do vídeo de fundo, salva em `out/` ao lado do vídeo) e a **legenda com até 5 hashtags**, seguindo `references/legenda.md` e `references/publicacao.md`. A chamada da legenda é a mesma do fim do vídeo, nunca uma nova.
 - Lembre o usuário de **escolher a capa** ao postar (o Reel da Graal saiu com a tela final do CTA de miniatura, e a grade ficou com cara de anúncio) e de **fixar um comentário** com a pergunta do vídeo.
 - Peça os prints dos insights depois de 24 a 48 h e analise com a seção 6 de `references/publicacao.md`; registre o resultado no histórico.
 - Acrescente a linha do vídeo ao `HISTORICO-SHORTS.md`; é ela que garante que o próximo será diferente.

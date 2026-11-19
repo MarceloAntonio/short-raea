@@ -20,6 +20,8 @@ Pesquisado em 18/11/2026. As fontes são blogs de marketing que citam o Adam Mos
 
 ## 2. Legenda
 
+Tom, estrutura, CTAs e checklist completos em `legenda.md`. Aqui ficam as regras que valem por cima dela.
+
 1. **Primeira linha**: a pergunta ou o termo que o cliente procuraria, com a palavra-chave do serviço ("Terceirizar o suporte de TI vale a pena para a sua empresa?"). É a única linha visível antes do "mais".
 2. **Corpo**: o gancho do vídeo e o argumento em 2 ou 3 frases, só com os fatos aprovados na fase 1. Nada que o vídeo não diga.
 3. **Chamada**: **a mesma do fechamento do vídeo**, com as mesmas palavras ("Fale com a Graal Solutions: link na bio").
