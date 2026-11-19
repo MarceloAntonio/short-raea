@@ -9,6 +9,7 @@ Leia na fase 5, depois da entrega do vídeo. Um perfil pequeno depende mais da c
 4. Capa
 5. Outros recursos para perfil pequeno
 6. Ler os insights e o que já aprendemos
+7. CTA que leva a uma página
 
 ## 1. O que o Instagram mede
 
@@ -90,3 +91,13 @@ Retenção por trecho: gancho 100 → 68 %; **custo (16,8 s de lista falada) 68 
 6. **Seguir: promessa de continuação.** Série com nome e número ("TI sem enrolação #1") e um final que anuncia o próximo. Venda ("fala com a gente, link na bio") fica para a legenda e para poucos vídeos.
 7. **CTA de 2 a 3 s**, emendando no loop. Tela final parada é deslize.
 8. **Capa escolhida na hora de postar.** Sem isso, o Instagram pega um quadro qualquer (aqui, a tela do CTA) e a grade parece anúncio.
+
+## 7. CTA que leva a uma página ("comenta X que eu te mando no direct")
+
+Caso Graal, vídeo do vazamento de e-mail (19/11/2026): "Comenta EMAIL que eu te mando o passo a passo no direct", e o link do direct leva a uma página no site da marca.
+
+- **A página existe antes do post.** Ela foi feita no site da marca (Next.js, `/[locale]/email-leak`, link curto `/vazamento` por redirect) e publicada antes do vídeo. Você faz o código, roda o build e envia ao git; o deploy no servidor quem faz é o usuário (o modo automático do Claude Code bloqueia SSH para servidor de produção).
+- **Ferramenta de terceiros: confira o custo e os termos antes de prometer.** A API do Have I Been Pwned é paga (a partir de US$ 4,39/mês) e a XposedOrNot grátis exige licença para uso comercial. A saída sem custo foi uma página da marca com o passo a passo e um botão para o site do HIBP, que é grátis para quem consulta o próprio e-mail; a página diz que a marca não recebe o e-mail digitado.
+- **A página cobre todo conselho que o vídeo dá.** Quando o vídeo ganhou a parte do phishing ("Confirme seu código: 4821"), a página ganhou o item "Nunca passe o código de verificação para ninguém". Releia a página depois de cada mudança de fala.
+- **Resposta no direct:** perfil pequeno responde à mão; automação (ManyChat ou parecido) só quando o volume pedir. Sem ninguém respondendo, troque o CTA por "link na bio".
+

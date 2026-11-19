@@ -106,4 +106,6 @@ Capa, legenda e hashtags: `references/publicacao.md`.
 - **Objeto que gira não pode encostar na parede**: a cópia da chave continuava girando pendurada no quadro e metade entrava na parede. Quando o objeto pousa, pare a rotação.
 - **Cabelo com furos**: esfera achatada de det 1 sobre a cabeça deixa vértices da cabeça aparecendo. Use det 2 e raio um pouco maior que a cabeça.
 - **Peças iguais acesas e apagadas**: ponha o emissive no nome da malha, senão as duas dividem o material.
+- **Rótulo 2D sobre objeto 3D nunca alinha**: uma etiqueta de papel 3D presa na chave com o texto "seu@email.com" desenhado em 2D por cima ficou com o texto fora do papel, e o papel parecia entrar na parede. Escolha um: ou o texto em 2D com o próprio fundo (papel, pílula) preso a um ponto 3D pequeno (uma argolinha), ou tudo em 3D. A capa em HTML segue a mesma regra: refaça o fundo sem o papel e posicione a etiqueta pela argolinha.
+- **Overlay preso entre duas deixas próximas**: o card "Ele faz login." entrava no "login" e saía no "ela" seguinte, e ficava 1 s na tela, quase todo em animação de entrada e saída. Meça o intervalo entre `em` e `ate` (ou o fim do passo) e garanta pelo menos 1,2 s em tamanho cheio; se não der, comece o overlay numa palavra anterior.
 
