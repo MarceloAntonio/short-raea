@@ -17,14 +17,16 @@ Depois, no Claude Code: `/short-raea` com o tema do vídeo.
 
 ## Requisitos
 
-- raea instalado (`curl -fsSL https://raea.io/install | sh`) e a skill `raea`.
+- raea instalado (`curl -fsSL https://raea.io/install | sh`; no Windows, `irm https://raea.io/install.ps1 | iex` no
+  PowerShell) e a skill `raea`.
 - Chaves em `~/api/elevenlabs.env` (`ELEVENLABS_API_KEY=`) e `~/api/freesound.env` (`FREESOUND_API_KEY=`), pasta 700 e
   arquivos 600. Nunca dentro deste repositório.
-- ffmpeg, ImageMagick (`magick`) e Node 22+.
+- ffmpeg, ImageMagick (`magick`) e Node 22+. Para a capa, Google Chrome (usado sem janela).
 
 ## Arquivos
 
 - `SKILL.md`: o processo, fase a fase.
 - `references/conceitos.md`: motores de conceito e clichês proibidos.
-- `references/tecnico.md`: voz, sons, armadilhas do raea, verificação e entrega.
+- `references/tecnico.md`: voz, sons, armadilhas do raea, verificação, entrega, Windows e vários idiomas.
+- `references/publicacao.md`: capa em HTML, legenda e hashtags para Reels.
 - `historico/HISTORICO-SHORTS.md`: um vídeo por linha; o próximo precisa diferir do último.

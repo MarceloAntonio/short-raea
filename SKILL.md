@@ -7,7 +7,7 @@ description: Cria Shorts verticais (Reels, TikTok, YouTube Shorts) chamativos, f
 
 Você vai fazer um vídeo vertical 1080x1920 que prende a atenção nos primeiros segundos e não se parece com o vídeo anterior. O que separa um short que viraliza de um genérico é a ideia, não a técnica; por isso a maior parte deste processo é decidir **o que** fazer antes de abrir o raea. Responda em português.
 
-Detalhes técnicos (chaves, endpoints, armadilhas do raea, comandos de verificação e entrega) estão em `references/tecnico.md`; leia antes da fase 4. Ideias de formato e a lista de clichês estão em `references/conceitos.md`; leia na fase 2.
+Detalhes técnicos (chaves, endpoints, armadilhas do raea, Windows, vários idiomas, comandos de verificação e entrega) estão em `references/tecnico.md`; leia antes da fase 4. Ideias de formato e a lista de clichês estão em `references/conceitos.md`; leia na fase 2. Capa, legenda e hashtags estão em `references/publicacao.md`; leia na fase 5.
 
 ## Fase 1. Perguntar
 
@@ -37,7 +37,8 @@ Se a marca já tem projeto num workspace do raea (`~/Documentos/raea/`), leia o 
 
 1. Escreva a narração por passo: fala curta, português do Brasil coloquial, sem cara de anúncio. Calcule o tempo (com o Liam a 1,15, são cerca de 3 palavras por segundo: 70 palavras dão uns 26 s e 120 dão uns 42 s, sem contar as pausas; medido em 17/11/2026). **Espere aprovação.**
 2. Monte um `roteiro.json` que controla o vídeo inteiro: passos, narração, elementos, câmera, overlays, efeitos sonoros e CTA. Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: assim, quando a voz muda, tudo continua no lugar.
-3. Modelo de **estrutura** (não de conteúdo): `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`, `scripts/gerar-audio.ts`, `scripts/baixar-sons.ts`) e o porte para o raea em `~/Documentos/raea/graal/projects/terceirizar-ti`. Copie o encanamento (linha do tempo, deixas por palavra, legendas, `emo()`, fontes); invente as cenas do zero.
+3. Modelo de **estrutura** (não de conteúdo): `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`, `scripts/gerar-audio.ts`, `scripts/baixar-sons.ts`) e o porte para o raea em `~/Documentos/raea/graal/projects/terceirizar-ti` (no Windows, `~/projetos/graal/projects/terceirizar-ti`, que também tem `ferramentas/narrar.py` e `ferramentas/idiomas.py`). Copie o encanamento (linha do tempo, deixas por palavra, legendas, `emo()`, fontes); invente as cenas do zero.
+4. Se o vídeo vai sair em mais de um idioma, escreva o roteiro já sabendo disso: deixas em palavras que existem nos outros idiomas e nenhuma palavra repetida na mesma fala (`references/tecnico.md`, seção 8).
 
 ## Fase 4. Produzir no raea
 
@@ -53,13 +54,26 @@ Siga a skill `raea` para workspace, projeto, `raea context .`, `brief.ts` e `pla
 Faça a verificação da referência: check rápido, folha de quadros-chave (olhe as imagens), render completo, medição de duração e loudness, volume de cada efeito contra a voz, e a cópia em AAC para WhatsApp e Instagram (o raea grava Opus, que eles recusam). Só diga que está pronto mostrando os números medidos.
 
 Depois:
+- Ofereça a **capa** (HTML com a cena 3D do vídeo de fundo, salva em `out/` ao lado do vídeo) e a **legenda com 5 hashtags**, seguindo `references/publicacao.md`. A chamada da legenda é a mesma do fim do vídeo, nunca uma nova.
 - Acrescente a linha do vídeo ao `HISTORICO-SHORTS.md`; é ela que garante que o próximo será diferente.
 - Apague renders intermediários e testes; ficam o original final e a cópia de entrega.
 - Registre armadilhas novas na seção `## Regressões` do `AGENTS.md` do projeto.
+
+## Fase 6. Rodadas de ajuste do cliente
+
+O cliente quase sempre volta com uma lista ("mais peso no custo", "mostrar a certificação", "escritório com cara de empresa maior", "versão em inglês"). Para cada rodada:
+
+1. **Planeje antes de mexer**: cada pedido vira uma tarefa no `plan.org`, com as suas palavras, e a resposta de cada um é uma mudança concreta (fala nova, overlay novo, peça nova). Fatos que entram no vídeo continuam vindo só da lista da fase 1; a certificação da Graal já estava confirmada no `roteiro.json` (`fatos`), por isso pôde ir para a fala.
+2. **Mudança de visual grande (layout, cenário, personagem): mostre opções em imagem antes de refazer o vídeo.** Faça uma composição de prévia que desenha uma proposta por quadro (`--at 0,1,2,3,4`), com o título de cada uma, e entregue as imagens soltas e uma lado a lado. Use as peças do próprio vídeo, para a escolhida entrar sem retrabalho. Quando o usuário pedir variações de uma delas, faça outra rodada de 5 a partir dela.
+3. **Mantenha as âncoras da história** ao trocar o cenário (`references/tecnico.md`, seção 9) e confira um quadro de cada cena que depende delas.
+4. **Mexa só no que foi pedido.** "Só o layout" quer dizer roteiro, vozes e tempos intactos. Um defeito antigo que você encontrar no caminho (setas que não apareciam) pode ser corrigido junto, mas diga isso.
+5. **Um render por vez** e um arquivo novo por versão (`-v6`, `-v7`); a versão anterior fica para comparar.
+6. Feche cada rodada dizendo o que mudou, o que você conferiu nos quadros e o que só o usuário pode conferir (a pronúncia, por exemplo).
 
 ## Regras que valem o tempo todo
 
 - **Retenção**: conflito no primeiro 1,5 s; alguma mudança a cada 2 a 4 s; uma metáfora visual central que volta; a virada transforma a mesma imagem do problema; o último quadro encaixa no primeiro para o replay parecer contínuo.
 - **Verdade**: só os fatos da fase 1; na dúvida, suavize ou pergunte. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA.
-- **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do próprio serviço. Nunca imprima o conteúdo desses arquivos.
+- **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do próprio serviço. Nunca imprima o conteúdo desses arquivos. Se a chave estiver em outro lugar, pergunte onde; não procure arquivos de chave pelo disco.
+- **Você não ouve o áudio**: pronúncia, sotaque e mixagem fina são do usuário. Meça o que dá para medir (loudness, duração) e peça para ele ouvir o resto.
 - **Versões**: cada render novo vira um arquivo novo (`-v2`, `-v3`), para dar para comparar e voltar.
