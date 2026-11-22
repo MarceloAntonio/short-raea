@@ -1,0 +1,4 @@
+# Dados de clientes e métricas: ficam só no disco (o repositório é público)
+marcas/*
+!marcas/_modelo.md
+historico/HISTORICO-SHORTS.md

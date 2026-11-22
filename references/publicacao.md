@@ -25,7 +25,7 @@ Tom, estrutura, CTAs e checklist completos em `legenda.md`. Aqui ficam as regras
 
 1. **Primeira linha**: a pergunta ou o termo que o cliente procuraria, com a palavra-chave do serviço ("Terceirizar o suporte de TI vale a pena para a sua empresa?"). É a única linha visível antes do "mais".
 2. **Corpo**: o gancho do vídeo e o argumento em 2 ou 3 frases, só com os fatos aprovados na fase 1. Nada que o vídeo não diga.
-3. **Chamada**: **a mesma do fechamento do vídeo**, com as mesmas palavras ("Fale com a Graal Solutions: link na bio").
+3. **Chamada**: **a mesma do fechamento do vídeo**, com as mesmas palavras (o CTA padrão de `marcas/<marca>.md`).
 4. **Hashtags**: na última linha.
 
 **Não invente uma chamada que o vídeo não faz.** Numa versão, a legenda dizia "Comente TI que a gente te chama no WhatsApp" e "Manda pra quem é dono de empresa". O usuário recusou as duas: o vídeo não pede comentário, "a gente te chama" promete um atendimento que ninguém combinou, e nem todo perfil tem WhatsApp. Se quiser testar "comente PALAVRA" ou um pedido de envio, isso precisa estar no roteiro do vídeo, e a resposta automática (ManyChat ou parecido) precisa existir antes de postar.
@@ -37,7 +37,7 @@ Tom, estrutura, CTAs e checklist completos em `legenda.md`. Aqui ficam as regras
 - Exatamente 5, uma linha só, no fim da legenda.
 - Misture: o nome do serviço como o cliente procura (#suportedeti), o tema exato (#terceirizacaodeti), quem é o público em palavras de nicho (#tiparaempresas) e o assunto de um fato do vídeo (#segurancadainformacao, se o vídeo mostra a certificação). Use a cidade quando a marca atende numa região só.
 - Evite as gigantes (#reels, #tecnologia, #empreendedorismo): o vídeo some em minutos. O guia da Later sugere hashtags de 50 mil a 1 milhão de publicações.
-- **Pergunte antes de usar hashtag de público.** O usuário vetou #pequenasempresas para a Graal; o público "pequena empresa" estava no brief, mas não é como a marca quer ser vista.
+- **Pergunte antes de usar hashtag de público.** Um cliente vetou a hashtag do próprio público: o público estava no brief, mas não era como a marca queria ser vista. Os vetos de cada marca ficam em `marcas/<marca>.md`.
 - Você não vê a contagem de publicações de fora do app. Diga isso e peça para o usuário conferir cada hashtag na busca do Instagram antes de postar.
 
 ## 4. Capa
@@ -65,6 +65,19 @@ A capa é feita em HTML e fotografada com o Chrome sem janela. Fica em `out/capa
 ## 6. Ler os insights e o que já aprendemos
 
 Peça ao usuário os prints de "Insights do reel" (visão geral, gráfico de retenção, "o que afeta suas visualizações") 24 a 48 h depois de postar. Cruze a curva de retenção com o início de cada passo (some `duracao` de `narracao.json` + `pausaEntrePassosSeg` por passo) para saber **qual trecho** perdeu gente, e leia cada taxa como resposta a uma pergunta: o vídeo deu motivo para essa ação?
+
+### Diagnóstico em ordem
+
+Quando um Reel vai mal, confira nesta ordem e pare na primeira alavanca que explica o resultado; consertar fora de ordem desperdiça o próximo vídeo.
+
+1. **Originalidade**: vários Reels seguidos com queda de alcance para não seguidores, sem problema de gancho, indicam conta limitada (repost, marca d'água do TikTok ou CapCut). Nenhuma edição no vídeo resolve.
+2. **Gancho**: pulados acima da média da conta e queda forte nos 3 primeiros segundos.
+3. **Corpo**: a curva cai num trecho específico (cruze com o início de cada passo).
+4. **Tema claro**: quem não segue entende do que se trata sem som?
+5. **Envio**: envios por alcance baixos = faltou o momento de envio (`roteiro.md`, seção 4).
+6. **Áudio** e 7. **legenda/capa**: só depois de descartar os anteriores.
+
+Compare com a **média da própria conta**, não com números absolutos: guarde no histórico, por vídeo, pulados, tempo médio, envios, salvamentos e seguidores ganhos.
 
 ### Caso Graal, terceirizar suporte de TI (v7, 63 s, perfil com 31 seguidores, 19 h)
 

@@ -1,82 +1,147 @@
 ---
 name: short-raea
-description: Cria Shorts verticais (Reels, TikTok, YouTube Shorts) chamativos, feitos para reter e ganhar views, renderizados com o raea em 3D, com narração ElevenLabs, sons e músicas do Freesound, legendas por palavra e CTA no padrão da marca. Pergunta o tema primeiro, propõe 5 conceitos fora do óbvio e nunca repete o formato do vídeo anterior (histórico em ~/.claude/skills/short-raea/historico/HISTORICO-SHORTS.md). Use sempre que o usuário pedir um short, reels, vídeo vertical, vídeo pro Insta ou TikTok, vídeo "pra viralizar" ou "pegar view", vídeo explicativo de marca ou serviço, ou digitar /short-raea, mesmo que não cite o raea.
+description: Cria Shorts verticais (Reels, TikTok, YouTube Shorts) feitos para reter e gerar envios, renderizados em 3D com o raea, com narração ElevenLabs, sons do Freesound, legendas por palavra e CTA no padrão da marca. Propõe conceitos fora do óbvio e nunca repete o formato do vídeo anterior. Também escreve só a legenda, só ganchos, critica um roteiro pronto, analisa os insights de um Reel e faz rodadas de ajuste do cliente. Use quando o usuário pedir short, reels, vídeo vertical, vídeo pro Insta ou TikTok, vídeo "pra viralizar", vídeo explicativo de marca, legenda de Reel, análise de insights, ou digitar /short-raea, mesmo sem citar o raea.
 ---
 
 # Short chamativo com raea
 
-Você vai fazer um vídeo vertical 1080x1920 que prende a atenção nos primeiros segundos e não se parece com o vídeo anterior. O que separa um short que viraliza de um genérico é a ideia, não a técnica; por isso a maior parte deste processo é decidir **o que** fazer antes de abrir o raea. Responda em português.
+Você faz vídeos verticais 1080x1920 que prendem nos primeiros segundos, dão um motivo para a pessoa enviar o vídeo a alguém e não se parecem com o vídeo anterior. O que separa um short que viraliza de um genérico é a ideia, não a técnica: a maior parte do processo é decidir **o que** fazer antes de abrir o raea. Responda em português.
 
-Detalhes técnicos (chaves, endpoints, armadilhas do raea, Windows, vários idiomas, comandos de verificação e entrega) estão em `references/tecnico.md`; leia antes da fase 4. Ideias de formato e a lista de clichês estão em `references/conceitos.md`; leia na fase 2. Capa, legenda e hashtags estão em `references/publicacao.md`, e o jeito de escrever a legenda (tom brasileiro, estrutura, checklist) em `references/legenda.md`; leia os dois na fase 5.
+Nenhum vídeo tem viralização garantida. Fale do que *tende* a funcionar e por quê, e nunca prometa número.
+
+## Índice
+1. Arquivos desta skill
+2. Modos (escolha pelo pedido)
+3. Progresso do vídeo completo
+4. Fase 1. Perguntar
+5. Fase 2. Conceito, sem repetir o anterior
+6. Fase 3. Roteiro
+7. Fase 4. Produzir no raea
+8. Fase 5. Verificar e entregar
+9. Fase 6. Rodadas de ajuste do cliente
+10. Regras que valem o tempo todo
+
+## Arquivos desta skill
+
+Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase indicada.
+
+| Arquivo | Quando ler |
+|---|---|
+| `marcas/<marca>.md` | Fase 1, se existir: cores, fontes, logos, fatos aprovados, CTA, vetos, voz |
+| `references/conceitos.md` | Fase 2: motores, formatos que puxam ação, clichês |
+| `references/roteiro.md` | Fase 3 e modo crítica: gancho em 3 camadas, as 3 falhas, estruturas de envio |
+| `references/debate.md` | Fase 3, modo crítica, debate rápido e fase 5: como disparar os agentes, rodadas, pasta do debate |
+| `agents/` | Prompts dos 6 agentes do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz), passados à ferramenta `Agent` |
+| `references/tecnico.md` | Fase 4: chaves, voz, sons, armadilhas do raea, verificação, entrega, idiomas |
+| `references/publicacao.md` | Fase 5 e modo insights: capa, hashtags, insights e diagnóstico |
+| `references/legenda.md` | Fase 5 e modo legenda: tom brasileiro, estrutura, checklist |
+| `references/plataformas.md` | Fase 4 e fase 5, se o vídeo sai também no TikTok ou no YouTube Shorts: zonas seguras, duração, título, hashtags, áudio |
+| `historico/HISTORICO-SHORTS.md` | Fase 2 e fase 5: um vídeo por linha, com os resultados (fora do git; o formato está em `HISTORICO-SHORTS.exemplo.md`) |
+| `scripts/` | Fases 4 e 5: voz, sons, `emo()`, estilo, verificação e lint de texto (lista em `references/tecnico.md`, seção 10) |
+
+## Modos (escolha pelo pedido)
+
+- **Vídeo completo** ("faz um short sobre X") → fases 1 a 5.
+- **Só ganchos ou ideias** → fase 1 enxuta + fase 2; entregue os conceitos e ofereça seguir para o roteiro.
+- **Criticar um roteiro ou vídeo pronto** → os 4 revisores e o juiz, sem o roteirista (`references/debate.md`, seção 4), e `references/roteiro.md`, seção "Modo crítica". Aponte o segundo exato em que a atenção cai, diga qual das 3 falhas é, e reescreva o trecho fraco.
+- **Debate rápido** ("debate rápido", "roda o debate nisso") → uma rodada do debate, sem perguntar nada (`references/debate.md`, seção 4).
+- **Só a legenda** → `references/legenda.md`. Não passe pelo grill me se o vídeo e a marca já estão claros.
+- **Analisar insights** ("o reel flopou", prints de insights) → `references/publicacao.md`, seção 6; registre no histórico.
+- **Ajuste do cliente** (lista de pedidos sobre um vídeo já feito) → fase 6.
+- **Outro idioma** de um vídeo pronto → `references/tecnico.md`, seção 8.
+
+O debate entre agentes (fase 3, modo crítica, debate rápido) gasta bem mais tokens que um roteiro escrito direto. Se o usuário pedir **"sem debate"**, escreva e revise o roteiro você mesmo com `references/roteiro.md`.
+
+## Progresso do vídeo completo
+
+Copie esta lista no `plan.org` (ou na lista de tarefas) e marque cada item ao terminar. Se uma verificação falhar, volte ao passo indicado.
+
+```
+- [ ] 1. Grill me respondido (7 itens) e marca carregada
+- [ ] 2. 5 conceitos com nota; usuário escolheu um
+- [ ] 3. Debate do roteiro (até 2 rodadas) salvo em debate/; roteiro final, PARO/PASSO e veredito mostrados; usuário aprovou
+- [ ] 4. roteiro.json com deixas por palavra; checagem de deixas sem faltas
+- [ ] 5. Voz, sons, cenas, legendas e CTA no raea
+- [ ] 6. Verificação medida OK e rolador de feed com os quadros do MP4 (senão, volte ao 5)
+- [ ] 7. Cópia AAC, capa e legenda entregues
+- [ ] 8. Histórico e AGENTS.md atualizados; intermediários apagados
+```
 
 ## Fase 1. Perguntar
 
-Faça um **grill me** com a ferramenta `AskUserQuestion`, nunca com uma lista de perguntas no chat. Sem estas respostas, qualquer conceito é chute.
+Se existir `marcas/<marca>.md`, leia antes e pergunte só o que faltar. Se a marca já tem projeto num workspace do raea, leia o `brief.ts` e o `AGENTS.md` dele também.
 
-- Mande no máximo 4 perguntas por chamada, cada uma com 2 a 4 opções concretas tiradas do que você já sabe (argumentos, histórico, workspace). Marque a melhor opção com "(Recomendado)" e coloque-a em primeiro. O "Outro" já vem pronto e serve para respostas livres (@, site, comando de instalação).
-- Faça quantas rodadas forem precisas. Use cada resposta para afinar a rodada seguinte, insista quando a resposta for vaga e só avance para a fase 2 quando os 7 itens estiverem respondidos.
-- Não pergunte o que os argumentos ou o workspace já respondem; diga em uma linha o que foi deduzido.
+Faça um **grill me** com a ferramenta `AskUserQuestion`, nunca com uma lista de perguntas no chat:
+
+- No máximo 4 perguntas por chamada, cada uma com 2 a 4 opções concretas tiradas do que você já sabe. A melhor vem primeiro, com "(Recomendado)". O "Outro" serve para respostas livres (@, site).
+- Quantas rodadas forem precisas. Use cada resposta para afinar a próxima, insista quando a resposta for vaga e só avance com os 7 itens respondidos.
+- Não pergunte o que os argumentos, a marca ou o workspace já respondem; diga em uma linha o que foi deduzido.
 
 1. **Tema**: sobre o que é o vídeo?
-2. **Marca**: de quem é? Site (para cores e fontes) e onde estão os logos.
-3. **Objetivo**: o que a pessoa deve fazer no fim? (seguir, comentar, enviar, salvar, chamar no WhatsApp). Escolha **uma** ação principal e construa o vídeo para ela: perfil pequeno precisa primeiro de seguidor e comentário, não de venda.
-4. **Público**: quem assiste? (dono de empresa leigo, dev, estudante...)
-5. **Fatos**: quais números, selos e promessas posso afirmar? O que não estiver nessa lista não entra: um dado inventado num vídeo de marca vira problema real para o cliente.
-6. **Duração**: o padrão é 30 a 40 s, nunca mais de 60 s. O vídeo da Graal de 63 s teve tempo médio de 24 s: só 1 em cada 3 pessoas chegou à virada (`references/publicacao.md`, seção 6).
-7. **CTA**: o texto exato do fechamento (@, site, WhatsApp, "link na bio").
+2. **Marca**: de quem é? Site (cores e fontes) e onde estão os logos.
+3. **Objetivo**: **uma** ação principal no fim (seguir, comentar, enviar, salvar, chamar no WhatsApp). Perfil pequeno precisa primeiro de envio, seguidor e comentário, não de venda.
+4. **Público**: quem assiste, e **para quem ele mandaria o vídeo** (o chefe, o sócio, o colega). Essa segunda pessoa define a cena de envio.
+5. **Fatos**: números, selos e promessas que posso afirmar. O que não estiver na lista não entra: dado inventado em vídeo de marca vira problema real para o cliente.
+6. **Duração**: padrão de 30 a 40 s, nunca mais de 60 s.
+7. **CTA**: o texto exato do fechamento.
 
-Se a marca já tem projeto num workspace do raea (`~/Documentos/raea/`), leia o `brief.ts` e o `AGENTS.md` dele e pergunte só o que faltar.
+Ao fim, ofereça salvar as respostas estáveis (cores, fontes, fatos, CTA, vetos, voz) em `marcas/<marca>.md`, para o próximo vídeo pular essas perguntas.
 
 ## Fase 2. Conceito, sem repetir o anterior
 
-1. Leia `~/.claude/skills/short-raea/historico/HISTORICO-SHORTS.md` (crie com o cabeçalho de tabela se não existir). O vídeo novo precisa diferir do último em pelo menos 4 das 7 colunas: conceito, formato, câmera, gancho, final, paleta e trilha. Quem segue a mesma página vê o mesmo vídeo com outro texto e passa direto.
-2. Leia `references/conceitos.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também). Para cada um: o gancho do primeiro 1,5 s, a imagem central, a virada e o final.
-3. Dê nota de 1 a 5 a cada conceito em **surpresa** (já vi isso mil vezes?), **clareza** (um leigo entende sem som?) e **aderência ao tema**. Recomende um em duas linhas e **espere o usuário escolher**.
+1. Leia o histórico (se não existir, copie `historico/HISTORICO-SHORTS.exemplo.md` e apague a linha fictícia). O vídeo novo difere do último em pelo menos 4 das 7 colunas: conceito, formato, câmera, gancho, final, paleta e trilha. Quem segue a página vê o mesmo vídeo com outro texto e passa direto. Se a marca tem uma série em andamento, o conceito pode continuar a série, mas a câmera, o gancho e o final mudam. Use a **média da conta** (pulados, tempo médio, envios, salvamentos, seguidores dos vídeos da mesma marca no histórico) como referência: o conceito novo ataca a métrica que mais ficou abaixo dela, e não um número absoluto de outro perfil.
+2. Leia `references/conceitos.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também). Para cada um: o gancho do primeiro 1,5 s nas 3 camadas (imagem, fala, texto na tela), a imagem central, a virada, o momento de envio e o final.
+3. Dê nota de 1 a 5 em **surpresa** (já vi isso mil vezes?), **clareza sem som** (um leigo entende no mudo?), **envio** (alguém manda isso para uma pessoa específica?) e **aderência ao tema**. Recomende um em duas linhas e **espere o usuário escolher**.
 
 ## Fase 3. Roteiro
 
-1. Escreva a narração por passo: fala curta, português do Brasil coloquial, sem cara de anúncio. Mire em **80 a 110 palavras no total** (30 a 40 s). Nenhum passo passa de 8 s de fala: lista falada ("salário, encargos, férias, décimo terceiro…") é onde a retenção mais cai; troque a lista por uma frase de impacto e deixe a imagem mostrar o resto. Calcule o tempo (com o Liam a 1,15, são cerca de 3 palavras por segundo: 70 palavras dão uns 26 s e 120 dão uns 42 s, sem contar as pausas; medido em 17/11/2026). **Espere aprovação.**
-2. Monte um `roteiro.json` que controla o vídeo inteiro: passos, narração, elementos, câmera, overlays, efeitos sonoros e CTA. Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: assim, quando a voz muda, tudo continua no lugar.
-3. Modelo de **estrutura** (não de conteúdo): `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`, `scripts/gerar-audio.ts`, `scripts/baixar-sons.ts`) e o porte para o raea em `~/Documentos/raea/graal/projects/terceirizar-ti` (no Windows, `~/projetos/graal/projects/terceirizar-ti`, que também tem `ferramentas/narrar.py` e `ferramentas/idiomas.py`). Copie o encanamento (linha do tempo, deixas por palavra, legendas, `emo()`, fontes); invente as cenas do zero.
-4. Se o vídeo vai sair em mais de um idioma, escreva o roteiro já sabendo disso: deixas em palavras que existem nos outros idiomas e nenhuma palavra repetida na mesma fala (`references/tecnico.md`, seção 8).
+1. **Debate** (`references/debate.md`): o roteirista escreve 6 a 10 ganchos e o roteiro v1; crítico, defensor, rolador-de-feed e especialista-chato revisam em paralelo, cegos uns aos outros; o juiz decide FICA, SAI ou MUDA. No vídeo completo, até 2 rodadas; o que continuar em aberto vem para o usuário. Tudo fica salvo em `debate/<data>-<tema>/` no projeto do raea, para dar para ver depois por que algo saiu. Com "sem debate", faça os passos 2 e 3 você mesmo, com 6 a 10 ganchos de arquétipos diferentes (um gancho só é chute).
+2. Regras da narração (o roteirista as segue; confira na versão final): português do Brasil coloquial, sem cara de anúncio, **80 a 110 palavras** (com o Liam a 1,15, cerca de 3 palavras por segundo, sem contar pausas). Nenhum passo passa de 8 s de fala; troque lista falada por uma frase de impacto e deixe a imagem mostrar o resto. Ligue os passos com "mas" e "então", nunca com "e aí". Passe a narração por `scripts/lint-texto.py --texto "..."` (ou no `roteiro.json`) e reescreva o que ele apontar.
+3. Confira as **3 falhas** (gancho fraco, sem escalada, virada enterrada) e o teste da promessa: o gancho promete o que o vídeo entrega? Mostre o roteiro final, o PARO/PASSO do rolador-de-feed, a tabela do veredito (ponto | quem levantou | FICA/SAI/MUDA | motivo), as notas e a duração estimada, e **espere aprovação**. A decisão é do usuário, não do juiz.
+4. Monte o `roteiro.json`: passos, narração, elementos, câmera, overlays, efeitos sonoros, CTA e `fatos`. Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: quando a voz muda, tudo continua no lugar.
+5. Use o projeto modelo só como **estrutura** (linha do tempo, deixas por palavra, legendas, `emo()`, fontes; caminhos em `references/tecnico.md`). Invente as cenas do zero.
+6. Se o vídeo vai sair em mais de um idioma, escreva já sabendo disso (`references/tecnico.md`, seção 8).
 
 ## Fase 4. Produzir no raea
 
-Siga a skill `raea` para workspace, projeto, `raea context .`, `brief.ts` e `plan.org`, e diga "Working in WORKSPACE / PROJECT". Depois, com `references/tecnico.md` aberto:
+Siga a skill `raea` para workspace, projeto, `raea context .`, `brief.ts` e `plan.org`, e diga "Working in WORKSPACE / PROJECT". Com `references/tecnico.md` aberto:
 
-1. **Voz**: ElevenLabs (Liam) → MP3 por passo e `narracao.json` com o tempo de cada palavra.
-2. **Sons e música**: Freesound CC0, escolhidos pela descrição e não pelo primeiro resultado, com os créditos anotados.
-3. **Cena, overlays, legendas e CTA**, contornando as limitações do raea listadas na referência.
-4. **CTA no padrão do site da marca**: leia o CSS do site (cores, fontes, raio, botões, espaçamento) e copie essa linguagem. Um fechamento genérico (logo brilhando, botão pílula com emoji) parece template e desvaloriza a marca.
+1. **Voz**: `scripts/gerar-audio.ts` → MP3 por passo e `narracao.json` com o tempo de cada palavra. Use `--previa` para conferir cenas e deixas antes de gastar créditos.
+2. **Sons e música**: Freesound CC0, escolhidos pela descrição, baixados com `scripts/baixar-sons.ts` (créditos anotados).
+3. **Cena, overlays, legendas e CTA**, contornando as armadilhas do raea da referência. O primeiro quadro precisa ler sozinho com o vídeo pausado: é ele que aparece no feed antes do play.
+4. **CTA no padrão do site da marca**: leia o CSS do site (cores, fontes, raio, botões) e copie essa linguagem. Fechamento genérico parece template.
 
 ## Fase 5. Verificar e entregar
 
-Faça a verificação da referência: check rápido, folha de quadros-chave (olhe as imagens), render completo, medição de duração e loudness, volume de cada efeito contra a voz, e a cópia em AAC para WhatsApp e Instagram (o raea grava Opus, que eles recusam). Só diga que está pronto mostrando os números medidos.
+Rode `scripts/verificar.sh compositions/X.tsx out/X-vN.mp4`; se falhar, volte à fase 4. Ele não olha nem ouve: confira também a folha de quadros-chave e meça os efeitos contra a voz (`references/tecnico.md`, seção 5). **Só diga que está pronto mostrando o relatório do script.**
+
+Rode também o **rolador-de-feed com o render**: o quadro 0 e os quadros de 0,5 s, 1 s, 1,5 s e 3 s do MP4, sem som (`references/debate.md`, seção 5). O primeiro quadro real nem sempre bate com o planejado no roteiro. Se der PASSO, avise antes de entregar e sugira o que mudar no começo.
 
 Depois:
-- Ofereça a **capa** (HTML com a cena 3D do vídeo de fundo, salva em `out/` ao lado do vídeo) e a **legenda com até 5 hashtags**, seguindo `references/legenda.md` e `references/publicacao.md`. A chamada da legenda é a mesma do fim do vídeo, nunca uma nova.
-- Lembre o usuário de **escolher a capa** ao postar (o Reel da Graal saiu com a tela final do CTA de miniatura, e a grade ficou com cara de anúncio) e de **fixar um comentário** com a pergunta do vídeo.
-- Peça os prints dos insights depois de 24 a 48 h e analise com a seção 6 de `references/publicacao.md`; registre o resultado no histórico.
-- Acrescente a linha do vídeo ao `HISTORICO-SHORTS.md`; é ela que garante que o próximo será diferente.
-- Apague renders intermediários e testes; ficam o original final e a cópia de entrega.
+- Gere a cópia AAC para WhatsApp e Instagram (o raea grava Opus, que eles recusam).
+- Ofereça a **capa** e a **legenda com até 5 hashtags** (`references/publicacao.md` e `references/legenda.md`). A chamada da legenda é a mesma do fim do vídeo. Antes de entregar, passe a legenda por `scripts/lint-texto.py --texto "..."`.
+- Ofereça também uma versão **sem música** (voz e efeitos), para o usuário testar um áudio em alta dentro do app, se a conta permitir.
+- Lembre de **escolher a capa** ao postar e de **fixar um comentário** com a pergunta do vídeo.
+- Acrescente a linha do vídeo ao histórico e peça os prints dos insights depois de 24 a 48 h.
+- Apague renders intermediários; ficam o original final e a cópia de entrega.
 - Registre armadilhas novas na seção `## Regressões` do `AGENTS.md` do projeto.
 
 ## Fase 6. Rodadas de ajuste do cliente
 
-O cliente quase sempre volta com uma lista ("mais peso no custo", "mostrar a certificação", "escritório com cara de empresa maior", "versão em inglês"). Para cada rodada:
-
-1. **Planeje antes de mexer**: cada pedido vira uma tarefa no `plan.org`, com as suas palavras, e a resposta de cada um é uma mudança concreta (fala nova, overlay novo, peça nova). Fatos que entram no vídeo continuam vindo só da lista da fase 1; a certificação da Graal já estava confirmada no `roteiro.json` (`fatos`), por isso pôde ir para a fala.
-2. **Mudança de visual grande (layout, cenário, personagem): mostre opções em imagem antes de refazer o vídeo.** Faça uma composição de prévia que desenha uma proposta por quadro (`--at 0,1,2,3,4`), com o título de cada uma, e entregue as imagens soltas e uma lado a lado. Use as peças do próprio vídeo, para a escolhida entrar sem retrabalho. Quando o usuário pedir variações de uma delas, faça outra rodada de 5 a partir dela.
-3. **Mantenha as âncoras da história** ao trocar o cenário (`references/tecnico.md`, seção 9) e confira um quadro de cada cena que depende delas.
-4. **Mexa só no que foi pedido.** "Só o layout" quer dizer roteiro, vozes e tempos intactos. Um defeito antigo que você encontrar no caminho (setas que não apareciam) pode ser corrigido junto, mas diga isso.
-5. **Um render por vez** e um arquivo novo por versão (`-v6`, `-v7`); a versão anterior fica para comparar.
-6. Feche cada rodada dizendo o que mudou, o que você conferiu nos quadros e o que só o usuário pode conferir (a pronúncia, por exemplo).
+1. **Planeje antes de mexer**: cada pedido vira uma tarefa no `plan.org`, com as palavras do cliente, e a resposta de cada um é uma mudança concreta. Fatos novos só entram se estiverem em `fatos` no `roteiro.json` ou forem confirmados agora.
+2. **Mudança visual grande** (layout, cenário, personagem): mostre opções em imagem antes de refazer o vídeo. Uma composição de prévia desenha uma proposta por quadro (`--at 0,1,2,3,4`), com título; entregue as imagens soltas e uma lado a lado, feitas com as peças do próprio vídeo.
+3. **Mantenha as âncoras da história** ao trocar o cenário (`references/tecnico.md`, seção 9).
+4. **Mexa só no que foi pedido.** Um defeito antigo encontrado no caminho pode ser corrigido junto, mas diga isso.
+5. **Um render por vez** e um arquivo novo por versão (`-v6`, `-v7`).
+6. Feche a rodada dizendo o que mudou, o que você conferiu nos quadros e o que só o usuário pode conferir (pronúncia, mixagem).
 
 ## Regras que valem o tempo todo
 
-- **Engajamento (aprendido com os insights da Graal, 19/11/2026)**: o vídeo precisa **pedir** a ação que quer, dentro do vídeo e não só na legenda. Cada ação tem um gatilho próprio: comentário = pergunta com resposta de uma palavra ou número; envio = um momento "isso é a gente" que a pessoa manda para o chefe ou o sócio; salvamento = algo útil para guardar (checklist, conta, número); seguir = promessa de continuação (série, "parte 2"). A marca e a solução aparecem antes dos 20 s. O CTA final dura no máximo 2 a 3 s e emenda no loop. Detalhes em `references/publicacao.md`, seção 6.
-- **Retenção**: conflito no primeiro 1,5 s; alguma mudança a cada 2 a 4 s; uma metáfora visual central que volta; a virada transforma a mesma imagem do problema; o último quadro encaixa no primeiro para o replay parecer contínuo.
-- **Verdade**: só os fatos da fase 1; na dúvida, suavize ou pergunte. Em afirmação técnica (segurança, TI), pense no caso em que a pessoa já está protegida: "com a senha vazada, ele faz login" só vale para quem não tem verificação em duas etapas; o chefe do cliente apontou isso e a fala virou "sem verificação em duas etapas, ele faz login; com ela, ele usa seus dados pra te enganar". Um especialista que assiste comenta a lacuna; cubra os dois casos na fala. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA.
-- **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do próprio serviço. Nunca imprima o conteúdo desses arquivos. Se a chave estiver em outro lugar, pergunte onde; não procure arquivos de chave pelo disco.
-- **Você não ouve o áudio**: pronúncia, sotaque e mixagem fina são do usuário. Meça o que dá para medir (loudness, duração) e peça para ele ouvir o resto.
-- **Versões**: cada render novo vira um arquivo novo (`-v2`, `-v3`), para dar para comparar e voltar.
+- **Ação pedida no vídeo**: o vídeo **pede** a ação que quer, dentro dele e não só na legenda. Comentário = pergunta com resposta de um toque; envio = um momento que a pessoa manda para alguém específico; salvamento = algo para consultar depois; seguir = promessa de continuação. Marca e solução antes dos 20 s. CTA de 2 a 3 s, emendando no loop.
+- **Retenção**: gancho nas 3 camadas no primeiro 1,5 s; alguma mudança na tela a cada 2 a 4 s; uma metáfora visual central que volta; um re-gancho no meio; a virada transforma a imagem do problema; o último quadro encaixa no primeiro.
+- **Verdade**: só os fatos aprovados; na dúvida, suavize ou pergunte. Em afirmação técnica (segurança, TI), cubra o caso de quem já está protegido; um especialista que assiste comenta a lacuna. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA.
+- **Agentes do debate**: todo agente que recebe o roteiro recebe também a lista de fatos e não pode acrescentar número, selo ou promessa fora dela. Nenhum agente lê `~/api/` nem escreve arquivos: quem salva a pasta do debate é você.
+- **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do serviço. Nunca imprima o conteúdo desses arquivos nem varra o disco atrás deles.
+- **Dados de cliente**: métricas, fatos e vetos de clientes ficam em `marcas/` e no histórico; se o repositório da skill for público, mantenha esses arquivos fora do git.
+- **Você não ouve o áudio**: meça loudness e duração e peça ao usuário para ouvir pronúncia e mixagem.
+- **Versões**: cada render novo vira um arquivo novo (`-v2`, `-v3`).

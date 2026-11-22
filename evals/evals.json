@@ -1,0 +1,95 @@
+{
+  "skill_name": "short-raea",
+  "evals": [
+    {
+      "id": 1,
+      "name": "video-completo-marca-nova",
+      "prompt": "Faz um short pra Padaria Trigo Bom sobre encomenda de bolo pelo WhatsApp. É cliente novo, ainda não tenho nada dele.",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo vídeo completo (fases 1 a 5) e copia a lista de progresso para o plan.org ou a lista de tarefas",
+        "Vê que não existe marcas/trigo-bom.md e faz o grill me com AskUserQuestion, no máximo 4 perguntas por chamada, até cobrir os 7 itens; não pergunta o tema, que já veio no pedido",
+        "Não inventa cores, fatos, números nem CTA da padaria: o que não foi respondido fica de fora ou é perguntado",
+        "Lê o histórico e propõe 5 conceitos com motores diferentes, com nota em surpresa, clareza sem som, envio e aderência, diferindo do último vídeo em pelo menos 4 das 7 colunas de formato",
+        "Espera o usuário escolher o conceito e aprovar o roteiro antes de abrir o raea",
+        "Roda scripts/lint-texto.py na narração antes de mostrar o roteiro",
+        "Ao fim da fase 1, oferece salvar as respostas em marcas/trigo-bom.md a partir de marcas/_modelo.md",
+        "Na fase 5, roda scripts/verificar.sh e só diz que está pronto mostrando o relatório; se algum item falhar, volta à fase 4",
+        "Entrega a cópia AAC, oferece capa e legenda com até 5 hashtags, e acrescenta a linha do vídeo ao histórico"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "so-a-legenda",
+      "prompt": "Faz só a legenda deste roteiro. Marca: Graal Solutions.\n\nGancho: \"Seu e-mail provavelmente já apareceu em algum vazamento.\" Passos: a senha é uma chave com cópias em cada loja onde você tem cadastro; uma loja é invadida; as cópias viram um chaveiro que passa entre golpistas; um deles abre a sua porta sem arrombar: ele faz login. Fechamento: \"Comenta EMAIL que eu te mando o passo a passo no direct.\"",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo legenda (references/legenda.md) e não passa pelo grill me nem pelas fases de vídeo",
+        "Lê marcas/graal.md se existir e respeita os vetos (sem #pequenasempresas nem #pequenosnegocios)",
+        "Primeira linha com a palavra-chave que o público buscaria, dentro de uns 125 caracteres, sem repetir o gancho do vídeo palavra por palavra",
+        "A chamada é a mesma do fechamento do vídeo (\"Comenta EMAIL...\"); não acrescenta pedido de envio, WhatsApp ou outra ação que o vídeo não faz",
+        "Não traz número, selo ou promessa que não esteja no roteiro ou nos fatos aprovados",
+        "No máximo 5 hashtags em português, numa linha no fim, e pede para o usuário conferir cada uma na busca do Instagram",
+        "Roda scripts/lint-texto.py na legenda e entrega sem trechos apontados",
+        "Entrega em bloco pronto para copiar, com lembretes curtos (fixar comentário, escolher a capa, a página do direct existir antes do post)"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "reel-flopou",
+      "prompt": "Meu reel flopou. Insights depois de 36 h: 410 visualizações, 62% pulados, tempo médio 6 s num vídeo de 38 s, 9 curtidas, 0 envios, 1 salvamento, 0 seguidores. A retenção despenca logo no começo. (NÚMEROS FICTÍCIOS, só para teste da skill.)",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo insights (references/publicacao.md, seção 6) e segue o diagnóstico em ordem, parando na primeira alavanca que explica o resultado",
+        "Compara com a média da conta no histórico (colunas Pulados %, Tempo médio, Envios, Salvamentos e Seguidores) em vez de números absolutos; se a marca não tem vídeos no histórico, diz que ainda não há média",
+        "Aponta o gancho como o problema principal (62% pulados e queda logo no começo) antes de falar de corpo, envio, áudio ou legenda",
+        "Pergunta qual vídeo é e qual marca, ou pede o roteiro e os prints, se não estiverem claros; não inventa a curva de retenção por trecho",
+        "Propõe 2 ou 3 ganchos novos de arquétipos diferentes, com as 3 camadas (imagem, fala, texto na tela)",
+        "Não promete número de visualizações para o próximo vídeo",
+        "Registra os resultados na linha do vídeo no histórico, ou oferece registrar"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "debate-fato-inventado",
+      "prompt": "Roda o debate neste roteiro da Graal Solutions. Fatos aprovados: ISO/IEC 27001 e 27701; 20 anos no mercado de tecnologia.\n\nGancho: \"Seu técnico saiu de férias e o sistema caiu.\" Passo 2: \"Empresa parada perde dinheiro por hora.\" Virada: \"Com a Graal, 98% dos chamados são resolvidos em menos de 15 minutos, com certificação ISO 27001.\" CTA: \"Fale com a Graal Solutions: link na bio.\"",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo crítica (roteiro trazido pelo usuário): os 4 revisores e o juiz, sem o roteirista, uma rodada, sem perguntar o que já está no pedido",
+        "Dispara crítico, defensor, rolador-de-feed e especialista-chato na mesma resposta, cada um com o prompt do seu arquivo em agents/, e só depois o juiz",
+        "O rolador-de-feed recebe só o quadro 0, o texto na tela e a fala do gancho; não recebe brief, marca nem o resto do roteiro",
+        "O crítico aponta \"98% dos chamados são resolvidos em menos de 15 minutos\" como fato fora da lista, com gravidade alta e a frase exata",
+        "O juiz decide SAI (ou MUDA para um fato da lista) nesse ponto, citando verdade como primeiro critério de desempate",
+        "Nenhum agente propõe outro número no lugar; a certificação ISO 27001 continua, porque está na lista",
+        "Salva as saídas em debate/<data>-<tema>/ no projeto (ou diz onde salvaria, se não houver projeto) e mostra a tabela ponto | quem levantou | FICA/SAI/MUDA | motivo"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "debate-gancho-so-com-som",
+      "prompt": "Debate rápido neste gancho e roteiro. Fatos: nenhum número aprovado.\n\nQuadro 0: tela preta. Texto na tela: nenhum. Fala do gancho: \"Escuta esse barulho... é o seu servidor pedindo socorro.\" (som de HD rangendo). Resto: o técnico explica backup em 3 passos e fecha com \"Comenta BACKUP\".",
+      "files": [],
+      "expected_behavior": [
+        "O rolador-de-feed avalia primeiro sem som e responde PASSO no mudo, dizendo que não entendeu do que é o vídeo (tela preta, sem texto)",
+        "O rolador-de-feed não sugere roteiro nem gancho novo, só o que o faria parar",
+        "O juiz marca o gancho como MUDA obrigatoriamente, com instrução do que precisa aparecer no quadro 0 e no texto na tela",
+        "O desempate cita clareza sem som acima de retenção e estilo",
+        "A resposta ao usuário mostra o PARO/PASSO (sem som e com som) e deixa a decisão final com ele"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "debate-especialista-2fa",
+      "prompt": "Roda o debate neste roteiro sobre vazamento de senha. Fatos aprovados: nenhum número.\n\nGancho: \"Sua senha vazou numa loja que você nem lembra.\" Passo 2: \"Com a senha vazada, ele entra na sua conta.\" Passo 3: \"Então troque a senha e use uma diferente em cada site.\" CTA: \"Comenta SENHA que eu te mando o passo a passo.\"",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo crítica: os 4 revisores e o juiz, sem o roteirista",
+        "O especialista-chato aponta \"Com a senha vazada, ele entra na sua conta\" como incompleta: quem tem verificação em duas etapas não é invadido só com a senha",
+        "A reescrita proposta cobre o caso com no máximo 3 palavras a mais (ex.: \"Com a senha vazada, ele pode entrar na sua conta\" ou \"...entra, se não tiver duas etapas\")",
+        "O especialista-chato não opina sobre gancho, ritmo ou estilo",
+        "O juiz decide MUDA nesse ponto com a reescrita do especialista, citando verdade como primeiro critério",
+        "Nenhum agente acrescenta número ou estatística de vazamento fora da lista de fatos"
+      ]
+    }
+  ]
+}

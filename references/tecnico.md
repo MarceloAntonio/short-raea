@@ -10,6 +10,7 @@
 7. Windows
 8. Vários idiomas
 9. Bugs de composição que já custaram um render
+10. Projeto modelo
 
 ## 1. Chaves
 
@@ -26,17 +27,17 @@ Se a chave não estiver em `~/api/`, **pergunte onde está**. Não varra o disco
 - `POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps?output_format=mp3_44100_128`
 - Cabeçalho `xi-api-key`. Corpo: `{"text": ..., "model_id": "eleven_multilingual_v2", "language_code": "pt", "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "speed": 1.15}}`
 - Voz padrão: **Liam** `TX3LPaxmHKxFdv7VOQHJ` (americana falando português; avise que pode ter sotaque). A chave não tem permissão de listar vozes: para outra voz, peça o ID.
-- A resposta traz `audio_base64` e `alignment` (tempo por caractere). Agrupe em palavras com `~/projetos/terceirizar-ti/scripts/palavras.ts`. O `scripts/gerar-audio.ts` desse projeto faz tudo por passo (só refaz o que mudou), grava `public/audio/narracao.json` e falha se passar de `duracaoMaxSeg`.
+- A resposta traz `audio_base64` e `alignment` (tempo por caractere). Agrupe em palavras com `scripts/palavras.ts`. O `scripts/gerar-audio.ts` faz tudo por passo (só refaz o que mudou), grava `narracao.json` em `meta.pastaAudio` e falha se passar de `duracaoMaxSeg`: `node scripts/gerar-audio.ts PASTA_DO_PROJETO` (`--roteiro roteiro.en.json` para outro idioma, `--tudo` para refazer todos). Voz, idioma e pronúncias vêm do `roteiro.json`.
 - Duração do passo = fim da última palavra + 0,2 s. O MP3 tem silêncio no fim e, somado em 8 passos, estoura os 60 s.
-- Alternativa grátis: edge-tts (`pt-BR-AntonioNeural`, `+18%`), com `meta.voz.provedor: "edge"`.
-- **Nome de marca pronunciado errado** ("Graal" saiu "girl" com o Liam): troque a palavra **só no texto enviado à voz**, com `meta.voz.pronuncia: {"Graal": "Graál"}` no roteiro (em inglês, `"Grah-ahl"`). A legenda e as deixas continuam com a grafia real: depois do alinhamento, troque cada palavra falada pela escrita na mesma posição (a troca é uma palavra por uma, então o número de palavras bate; se não bater, avise). Inclua o texto enviado à voz na assinatura do passo, para só aquele passo ser refeito. Você não ouve o áudio: peça ao usuário para conferir a pronúncia, e não diga que está corrigido antes disso.
+- Alternativa grátis: edge-tts (`pt-BR-AntonioNeural`, `+18%`), com `meta.voz.provedor: "edge"` (usa `scripts/tts.py`; `pip install edge-tts` no `.venv` do projeto).
+- **Nome de marca pronunciado errado** (um nome de marca saiu "girl" com o Liam): troque a palavra **só no texto enviado à voz**, com `meta.voz.pronuncia: {"Nome": "Nóme"}` no roteiro. As pronúncias de cada marca ficam em `marcas/<marca>.md`, seção "Voz". O `scripts/gerar-audio.ts` já faz a troca e a volta para a grafia real. A legenda e as deixas continuam com a grafia real: depois do alinhamento, troque cada palavra falada pela escrita na mesma posição (a troca é uma palavra por uma, então o número de palavras bate; se não bater, avise). Inclua o texto enviado à voz na assinatura do passo, para só aquele passo ser refeito. Você não ouve o áudio: peça ao usuário para conferir a pronúncia, e não diga que está corrigido antes disso.
 - **Prévia sem gastar créditos**: um modo `--previa` no script de voz que grava áudio mudo (`ffmpeg -f lavfi -i anullsrc`) e tempos estimados por palavra (0,12 s + 0,045 s por letra, mais pausa na pontuação). Serve para ver as cenas e conferir as deixas antes da voz real. A estimativa sai cerca de 30% mais longa que o Liam a 1,15.
 - Fala mais longa estoura os 60 s rápido: na rodada de ajustes, a fala do custo foi de 10,7 s para 16,8 s e o vídeo foi para 63 s. Avise a duração nova junto com o texto, antes de gerar.
 
 ## 3. Sons e música (Freesound, CC0)
 
 - Busca: `https://freesound.org/apiv2/search/?query=...&filter=license:"Creative Commons 0"&fields=id,name,username,license,duration,avg_rating,num_downloads,description,previews` com `Authorization: Token $K`. Baixe `previews["preview-hq-mp3"]`. Para um ID fixo: `/apiv2/sounds/{id}/`.
-- `~/projetos/terceirizar-ti/scripts/baixar-sons.ts` é a base: lista de pedidos com ID fixo; nos efeitos corta silêncio, faz fade e normaliza o pico em -2 dB; na música corta, faz fade-in e loudnorm -16; grava `CREDITOS.md`.
+- `scripts/baixar-sons.ts PASTA_DO_PROJETO [nomes]` é a base: lê a lista `sons` do `roteiro.json` (com ID fixo depois de escolher); nos efeitos corta silêncio, faz fade e normaliza o pico em -2 dB; na música corta, faz fade-in e loudnorm -16; grava `CREDITOS.md`.
 - Leia nome e descrição antes de escolher. Já vieram "alarme" que era bip de cinto de avião e "suspense" que era trilha de RPG. Depois de escolher, fixe o ID.
 - Música: uma faixa por fase (tensa no problema, leve depois da virada), crossfade de cerca de 1,2 s, uns -20 dB sob a voz. Faixa curta com fade-out no meio do vídeo soa como erro: corte 40 a 45 s sem fade-out e faça loop. Alternativa: compor com Tone.js no raea (`raea guide music`, `raea sounds`).
 - Volume dos efeitos: comece em 0,1 a 0,3. Agudos (alarme, bip, brilho) soam bem mais altos do que o pico indica. Meça o trecho com `ebur128` contra a voz logo antes; se passar mais de 1 LU, abaixe.
@@ -50,8 +51,8 @@ Se a chave não estiver em `~/api/`, **pergunte onde está**. Não varra o disco
 - **Vidro deixa o cenário maior sem tapar a ação**: para o escritório ter "cara de empresa grande", uma divisória de vidro (opacidade 0,16) com um salão cheio atrás funcionou melhor que paredes. A câmera alta vê o fundo pelo vidro, e os planos fechados continuam limpos.
 - **Personagens low-poly parecem todos calvos** com uma tampinha só na cabeça. Dê penteados variados (curto, liso até a nuca, longo até os ombros, rabo de cavalo, coque, cacheado, calvo com faixa grisalha) e cores variadas. O rosto olha para -z, então o cabelo comprido fica em +z, o lado que a câmera vê. O protagonista fica com um cabelo fixo e fácil de reconhecer.
 - **`<Line>` do drei quebra o render** ("BufferMesh: attribute instanceStart"). Use `tubeGeometry` com `CatmullRomCurve3`.
-- **Emoji**: o raea não desenha fonte de emoji colorida. Use PNGs da Noto (`npm pack emoji-datasource-google`, `img/google/64/CODIGO.png`) e uma `emo(texto)` que troca cada emoji por `<Img>`, e o ✓ por um SVG. Pronta em `~/Documentos/raea/graal/projects/terceirizar-ti/components/emo.tsx`.
-- **Contorno de texto**: `-webkit-text-stroke` e `paint-order` são ignorados. Use um anel de 16 `textShadow` (`estilo.ts` do mesmo projeto).
+- **Emoji**: o raea não desenha fonte de emoji colorida. Use PNGs da Noto (`npm pack emoji-datasource-google`, `img/google/64/CODIGO.png`) e uma `emo(texto)` que troca cada emoji por `<Img>`, e o ✓ por um SVG. Pronta em `scripts/emo.tsx`.
+- **Contorno de texto**: `-webkit-text-stroke` e `paint-order` são ignorados. Use um anel de 16 `textShadow` (`contorno()` em `scripts/estilo.ts`, que também traz as zonas seguras).
 - **Fontes**: `npm pack @fontsource/NOME`, copie os `.woff2` para `compositions/media/fonts/` e declare `@font-face` com `src: url(${staticFile(...)})`. Sempre defina `fontFamily`; o padrão do raea é serifado.
 - **API compatível com Remotion**: `interpolate`, `spring`, `Easing`, `Sequence`, `Audio` (`volume` como número ou função do quadro), `Img`, `staticFile`, `useCurrentFrame`. Ponha `<Mix lufs={-14} />` na composição.
 - **Duração** calculada no módulo: importe `narracao.json` e passe `durationInFrames` ao `<Composition>`.
@@ -59,10 +60,13 @@ Se a chave não estiver em `~/api/`, **pergunte onde está**. Não varra o disco
 
 ## 5. Verificação
 
-1. `raea check --quick compositions/X.tsx` após cada mudança. Avisos de leitura "0.0 s" vêm de olhar só 3 quadros e podem ser ignorados.
+`scripts/verificar.sh compositions/X.tsx out/X-vN.mp4` roda de uma vez o check rápido, as deixas, os nomes repetidos, a duração, o loudness, a tela parada e o quadro 0, e imprime OK/FALHA por item (outro idioma: `ROTEIRO=roteiro.en.json NARRACAO=... scripts/verificar.sh ...`). Os comandos abaixo são o que ele roda, para investigar uma falha, mais o que só dá para fazer olhando ou ouvindo (folha de quadros, efeitos contra a voz).
+
+1. `raea check --quick compositions/X.tsx` após cada mudança. Antes do render, rode também a checagem de deixas (seção 8) e a de nomes de componente repetidos (seção 9). Avisos de leitura "0.0 s" vêm de olhar só 3 quadros e podem ser ignorados.
 2. Quadros-chave (meio e fim de cada passo): `raea render compositions/X.tsx --at A,B,C -o out/quadros/`, depois `magick montage out/quadros/*.png -resize 360x -tile 6x -geometry +6+6 -background '#222' out/folha.png`, e abra a folha. Quadros soltos com saltos grandes podem sair com o 3D errado; na dúvida, tire o mesmo quadro do MP4 final: `ffmpeg -i out/X.mp4 -vf "select=eq(n\,N)" -vframes 1 q.png`.
 3. Render: `raea render compositions/X.tsx -o out/X-vN.mp4` (cerca de 140 ms por quadro no Linux, uns 4 min para 53 s; no Windows com GPU pequena, 3 vezes isso, seção 7). Rode em segundo plano, um vídeo por comando.
 4. Meça: `ffprobe` (duração ≤ 60 s) e `ffmpeg -i out/X-vN.mp4 -af ebur128=peak=true -f null -` (cerca de -14 LUFS, pico ≤ -1 dBTP). Para cada efeito, meça o trecho com `-ss T -t D` e compare com a voz logo antes. No zsh, `set -- $var` não separa palavras; rode laços desse tipo com `bash -c`.
+5. **Tela parada**: procure trechos de mais de 3 s sem mudança na imagem, que contrariam a regra de mudar algo a cada 2 a 4 s: `ffmpeg -i out/X-vN.mp4 -vf "select='gt(scene,0.02)',showinfo" -f null - 2>&1 | grep -o 'pts_time:[0-9.]*'` lista os momentos com mudança; um intervalo maior que 3 s entre dois deles é tela parada. Confira também que o quadro 0 não é vazio nem escuro: ele vira a miniatura antes do play.
 
 ## 6. Entrega
 
@@ -87,7 +91,7 @@ Capa, legenda e hashtags: `references/publicacao.md`.
 
 ## 8. Vários idiomas
 
-- **O roteiro em português é a fonte da cena** (câmera, lugares, cores, tempos fixos). Um script (`ferramentas/idiomas.py`) gera `roteiro.es.json` e `roteiro.en.json` a partir dele, trocando só os textos: falas, rótulos, overlays, CTA e as **palavras das deixas**. Assim, ajustar uma cena no português vale para os três depois de rodar o script.
+- **O roteiro em português é a fonte da cena** (câmera, lugares, cores, tempos fixos). Um script (`ferramentas/idiomas.py`, que ainda não está em `scripts/`: peça ao usuário) gera `roteiro.es.json` e `roteiro.en.json` a partir dele, trocando só os textos: falas, rótulos, overlays, CTA e as **palavras das deixas**. Assim, ajustar uma cena no português vale para os três depois de rodar o script.
 - Cada deixa precisa ser uma palavra **dita naquele idioma**. "caiu" vira "cayó" e "crashed"; "agora" vira "ahora" e "what".
 - **A primeira ocorrência vence**: se a palavra aparece duas vezes na fala ("é **só** contratar... de uma pessoa **só**"), a deixa cai na primeira. Prenda em outra palavra (`{"palavra": "pessoa", "depoisSeg": 0.25}`).
 - Antes de renderizar, rode uma checagem que procura cada deixa na `narracao.json` do idioma e lista as que faltam. Nos três idiomas ela rodou antes de cada render, e nenhum render saiu com deixa perdida.
@@ -109,3 +113,25 @@ Capa, legenda e hashtags: `references/publicacao.md`.
 - **Rótulo 2D sobre objeto 3D nunca alinha**: uma etiqueta de papel 3D presa na chave com o texto "seu@email.com" desenhado em 2D por cima ficou com o texto fora do papel, e o papel parecia entrar na parede. Escolha um: ou o texto em 2D com o próprio fundo (papel, pílula) preso a um ponto 3D pequeno (uma argolinha), ou tudo em 3D. A capa em HTML segue a mesma regra: refaça o fundo sem o papel e posicione a etiqueta pela argolinha.
 - **Overlay preso entre duas deixas próximas**: o card "Ele faz login." entrava no "login" e saía no "ela" seguinte, e ficava 1 s na tela, quase todo em animação de entrada e saída. Meça o intervalo entre `em` e `ate` (ou o fim do passo) e garanta pelo menos 1,2 s em tamanho cheio; se não der, comece o overlay numa palavra anterior.
 
+## 10. Projeto modelo
+
+Use como **estrutura**, nunca como conteúdo: copie o encanamento (linha do tempo, deixas por palavra, legendas, `emo()`, fontes) e invente as cenas do zero.
+
+Os scripts genéricos ficam em `scripts/`, sem nada de marca dentro (cores, textos e sons vêm do `roteiro.json` e de `marcas/<marca>.md`):
+
+| Arquivo | O que faz |
+|---|---|
+| `scripts/gerar-audio.ts` | Narração por passo (ElevenLabs ou edge-tts), `narracao.json` com tempo por palavra, pronúncias, limite de duração |
+| `scripts/palavras.ts` | Agrupa os tempos por caractere em palavras; `node scripts/palavras.ts` roda a checagem |
+| `scripts/tts.py` | Uma fala do edge-tts com os tempos de cada palavra |
+| `scripts/baixar-sons.ts` | Sons CC0 do Freesound pela lista `sons` do roteiro, tratados com ffmpeg, com `CREDITOS.md` |
+| `scripts/emo.tsx` | Troca emoji por PNG da Noto e ✓ por SVG |
+| `scripts/estilo.ts` | Zonas seguras, `contorno()` e `titulo(tamanho, fonte, cor)` |
+| `scripts/verificar.sh` | Verificação medida da fase 5 (seção 5) |
+| `scripts/lint-texto.py` | Frases com cara de IA ou de tradução na narração e na legenda |
+
+Projetos completos, para ver o encanamento montado:
+- Remotion: `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`).
+- Porte para o raea: `~/Documentos/raea/graal/projects/terceirizar-ti` (no Windows, `~/projetos/graal/projects/terceirizar-ti`). O `ferramentas/narrar.py` e o `ferramentas/idiomas.py` citados em versões antigas não estão na cópia do Linux; se precisar deles, peça ao usuário.
+
+Se esses caminhos não existirem na máquina, pergunte onde está o projeto modelo antes de recriar o encanamento.

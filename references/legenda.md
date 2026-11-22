@@ -4,6 +4,22 @@ Leia na fase 5, junto com `publicacao.md`, sempre que for escrever a legenda (de
 
 **Onde esta referência e `publicacao.md` discordam, vale `publicacao.md`** (fatos da plataforma e vetos do cliente). Os ajustes estão no fim, em "Ajustes para a short-raea".
 
+## Índice
+1. Quando usar
+2. Princípio central
+3. O que perguntar (só o que faltar)
+4. Estrutura da legenda
+5. Tom para o público brasileiro
+6. CTAs que funcionam no Brasil
+7. SEO do Instagram
+8. Hashtags
+9. Regras brasileiras importantes
+10. Processo
+11. Formato de entrega
+12. Exemplo
+13. Checklist antes de entregar
+14. Ajustes para a short-raea
+
 ## Quando usar
 
 - Pedido de legenda, descrição ou caption para um Reel
@@ -110,7 +126,7 @@ Tem um negócio assim e ainda não tem site? Chama no direct que a gente te most
 #sitesparaempresas #pequenosnegocios #marketingdigital #empreendedorismo #floripa
 ```
 
-(Exemplo genérico. Para a Graal, nada de #pequenasempresas ou #pequenosnegocios: veto do cliente.)
+(Exemplo genérico. Antes de usar hashtag de público, confira os vetos em `marcas/<marca>.md`.)
 
 ## Checklist antes de entregar
 
