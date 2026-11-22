@@ -30,19 +30,22 @@ Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase ind
 | `marcas/<marca>.md` | Fase 1, se existir: cores, fontes, logos, fatos aprovados, CTA, vetos, voz |
 | `references/conceitos.md` | Fase 2: motores, formatos que puxam ação, clichês |
 | `references/roteiro.md` | Fase 3 e modo crítica: gancho em 3 camadas, as 3 falhas, estruturas de envio |
+| `references/pautas.md` | Modo Pautas e fase 1 sem tema: perguntas, coleta, caçador, cético e juiz, o que entregar |
+| `references/nichos/<nicho>.md` | Modo Pautas: fontes, termos, calendário fixo e o que evitar de cada nicho (`_modelo.md` para criar outro) |
 | `references/debate.md` | Fase 3, modo crítica, debate rápido e fase 5: como disparar os agentes, rodadas, pasta do debate |
-| `agents/` | Prompts dos 6 agentes do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz), passados à ferramenta `Agent` |
+| `agents/` | Prompts dos agentes passados à ferramenta `Agent`: os 6 do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz) e os 2 das pautas (caçador de pautas, cético de pauta) |
 | `references/tecnico.md` | Fase 4: chaves, voz, sons, armadilhas do raea, verificação, entrega, idiomas |
 | `references/publicacao.md` | Fase 5 e modo insights: capa, hashtags, insights e diagnóstico |
 | `references/legenda.md` | Fase 5 e modo legenda: tom brasileiro, estrutura, checklist |
 | `references/plataformas.md` | Fase 4 e fase 5, se o vídeo sai também no TikTok ou no YouTube Shorts: zonas seguras, duração, título, hashtags, áudio |
 | `historico/HISTORICO-SHORTS.md` | Fase 2 e fase 5: um vídeo por linha, com os resultados (fora do git; o formato está em `HISTORICO-SHORTS.exemplo.md`) |
-| `scripts/` | Fases 4 e 5: voz, sons, `emo()`, estilo, verificação e lint de texto (lista em `references/tecnico.md`, seção 10) |
+| `scripts/` | Pautas (`pautas.py`), fases 4 e 5: voz, sons, `emo()`, estilo, verificação e lint de texto (lista em `references/tecnico.md`, seção 10) |
 
 ## Modos (escolha pelo pedido)
 
 - **Vídeo completo** ("faz um short sobre X") → fases 1 a 5.
-- **Só ganchos ou ideias** → fase 1 enxuta + fase 2; entregue os conceitos e ofereça seguir para o roteiro.
+- **Pautas** ("me dá ideias", "o que tá em alta em X", "sobre o que eu posto?") → `references/pautas.md`: pesquisa o que está em alta no nicho, com fonte e data, e entrega as 5 melhores pautas para escolher. A escolhida vira o Tema da fase 1.
+- **Só ganchos ou ideias** (com tema definido) → fase 1 enxuta + fase 2; entregue os conceitos e ofereça seguir para o roteiro.
 - **Criticar um roteiro ou vídeo pronto** → os 4 revisores e o juiz, sem o roteirista (`references/debate.md`, seção 4), e `references/roteiro.md`, seção "Modo crítica". Aponte o segundo exato em que a atenção cai, diga qual das 3 falhas é, e reescreva o trecho fraco.
 - **Debate rápido** ("debate rápido", "roda o debate nisso") → uma rodada do debate, sem perguntar nada (`references/debate.md`, seção 4).
 - **Só a legenda** → `references/legenda.md`. Não passe pelo grill me se o vídeo e a marca já estão claros.
@@ -57,7 +60,7 @@ O debate entre agentes (fase 3, modo crítica, debate rápido) gasta bem mais to
 Copie esta lista no `plan.org` (ou na lista de tarefas) e marque cada item ao terminar. Se uma verificação falhar, volte ao passo indicado.
 
 ```
-- [ ] 1. Grill me respondido (7 itens) e marca carregada
+- [ ] 1. Grill me respondido (7 itens) e marca carregada; sem tema, pautas pesquisadas, uma escolhida e os fatos dela confirmados um a um
 - [ ] 2. 5 conceitos com nota; usuário escolheu um
 - [ ] 3. Debate do roteiro (até 2 rodadas) salvo em debate/; roteiro final, PARO/PASSO e veredito mostrados; usuário aprovou
 - [ ] 4. roteiro.json com deixas por palavra; checagem de deixas sem faltas
@@ -77,7 +80,7 @@ Faça um **grill me** com a ferramenta `AskUserQuestion`, nunca com uma lista de
 - Quantas rodadas forem precisas. Use cada resposta para afinar a próxima, insista quando a resposta for vaga e só avance com os 7 itens respondidos.
 - Não pergunte o que os argumentos, a marca ou o workspace já respondem; diga em uma linha o que foi deduzido.
 
-1. **Tema**: sobre o que é o vídeo?
+1. **Tema**: sobre o que é o vídeo? Se ficar vazio ou vier "não sei" ou "me dá ideias", ofereça "Pesquisar o que está em alta (Recomendado)", "Temas que não envelhecem (dúvidas frequentes)" e "Eu digo o tema", e siga `references/pautas.md`. Os fatos da pauta escolhida entram no item 5 só como sugestão, até o usuário confirmar cada um.
 2. **Marca**: de quem é? Site (cores e fontes) e onde estão os logos.
 3. **Objetivo**: **uma** ação principal no fim (seguir, comentar, enviar, salvar, chamar no WhatsApp). Perfil pequeno precisa primeiro de envio, seguidor e comentário, não de venda.
 4. **Público**: quem assiste, e **para quem ele mandaria o vídeo** (o chefe, o sócio, o colega). Essa segunda pessoa define a cena de envio.
@@ -98,7 +101,7 @@ Ao fim, ofereça salvar as respostas estáveis (cores, fontes, fatos, CTA, vetos
 1. **Debate** (`references/debate.md`): o roteirista escreve 6 a 10 ganchos e o roteiro v1; crítico, defensor, rolador-de-feed e especialista-chato revisam em paralelo, cegos uns aos outros; o juiz decide FICA, SAI ou MUDA. No vídeo completo, até 2 rodadas; o que continuar em aberto vem para o usuário. Tudo fica salvo em `debate/<data>-<tema>/` no projeto do raea, para dar para ver depois por que algo saiu. Com "sem debate", faça os passos 2 e 3 você mesmo, com 6 a 10 ganchos de arquétipos diferentes (um gancho só é chute).
 2. Regras da narração (o roteirista as segue; confira na versão final): português do Brasil coloquial, sem cara de anúncio, **80 a 110 palavras** (com o Liam a 1,15, cerca de 3 palavras por segundo, sem contar pausas). Nenhum passo passa de 8 s de fala; troque lista falada por uma frase de impacto e deixe a imagem mostrar o resto. Ligue os passos com "mas" e "então", nunca com "e aí". Passe a narração por `scripts/lint-texto.py --texto "..."` (ou no `roteiro.json`) e reescreva o que ele apontar.
 3. Confira as **3 falhas** (gancho fraco, sem escalada, virada enterrada) e o teste da promessa: o gancho promete o que o vídeo entrega? Mostre o roteiro final, o PARO/PASSO do rolador-de-feed, a tabela do veredito (ponto | quem levantou | FICA/SAI/MUDA | motivo), as notas e a duração estimada, e **espere aprovação**. A decisão é do usuário, não do juiz.
-4. Monte o `roteiro.json`: passos, narração, elementos, câmera, overlays, efeitos sonoros, CTA e `fatos`. Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: quando a voz muda, tudo continua no lugar.
+4. Monte o `roteiro.json`: passos, narração, elementos, câmera, overlays, efeitos sonoros, CTA e `fatos` (cada um com status e, se veio de pesquisa, `fonte` e `data`). Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: quando a voz muda, tudo continua no lugar.
 5. Use o projeto modelo só como **estrutura** (linha do tempo, deixas por palavra, legendas, `emo()`, fontes; caminhos em `references/tecnico.md`). Invente as cenas do zero.
 6. Se o vídeo vai sair em mais de um idioma, escreva já sabendo disso (`references/tecnico.md`, seção 8).
 
@@ -139,7 +142,7 @@ Depois:
 
 - **Ação pedida no vídeo**: o vídeo **pede** a ação que quer, dentro dele e não só na legenda. Comentário = pergunta com resposta de um toque; envio = um momento que a pessoa manda para alguém específico; salvamento = algo para consultar depois; seguir = promessa de continuação. Marca e solução antes dos 20 s. CTA de 2 a 3 s, emendando no loop.
 - **Retenção**: gancho nas 3 camadas no primeiro 1,5 s; alguma mudança na tela a cada 2 a 4 s; uma metáfora visual central que volta; um re-gancho no meio; a virada transforma a imagem do problema; o último quadro encaixa no primeiro.
-- **Verdade**: só os fatos aprovados; na dúvida, suavize ou pergunte. Em afirmação técnica (segurança, TI), cubra o caso de quem já está protegido; um especialista que assiste comenta a lacuna. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA.
+- **Verdade**: só os fatos aprovados; na dúvida, suavize ou pergunte. Em afirmação técnica (segurança, TI), cubra o caso de quem já está protegido; um especialista que assiste comenta a lacuna. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA. Nada é "em alta" sem fonte com data; tragédia, crime com vítima e política não viram pauta de marca.
 - **Agentes do debate**: todo agente que recebe o roteiro recebe também a lista de fatos e não pode acrescentar número, selo ou promessa fora dela. Nenhum agente lê `~/api/` nem escreve arquivos: quem salva a pasta do debate é você.
 - **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do serviço. Nunca imprima o conteúdo desses arquivos nem varra o disco atrás deles.
 - **Dados de cliente**: métricas, fatos e vetos de clientes ficam em `marcas/` e no histórico; se o repositório da skill for público, mantenha esses arquivos fora do git.

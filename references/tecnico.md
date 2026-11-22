@@ -129,6 +129,7 @@ Os scripts genéricos ficam em `scripts/`, sem nada de marca dentro (cores, text
 | `scripts/estilo.ts` | Zonas seguras, `contorno()` e `titulo(tamanho, fonte, cor)` |
 | `scripts/verificar.sh` | Verificação medida da fase 5 (seção 5) |
 | `scripts/lint-texto.py` | Frases com cara de IA ou de tradução na narração e na legenda |
+| `scripts/pautas.py` | Coleta do modo Pautas: RSS, Trends, Google Notícias, HN, KEV e autocompletar do nicho (`references/pautas.md`) |
 
 Projetos completos, para ver o encanamento montado:
 - Remotion: `~/projetos/terceirizar-ti` (`roteiro.json`, `src/linhaDoTempo.ts`, `src/animacoes/`).

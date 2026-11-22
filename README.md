@@ -29,16 +29,21 @@ Depois, no Claude Code: `/short-raea` com o tema do vídeo.
 - `SKILL.md`: o processo, fase a fase.
 - `references/conceitos.md`: motores de conceito e clichês proibidos.
 - `references/roteiro.md`: gancho em 3 camadas, as 3 falhas, estruturas de envio e modo crítica.
+- `references/pautas.md`: o modo Pautas (pesquisa do que está em alta num nicho, com fonte e data).
+- `references/nichos/`: fontes, termos, calendário e o que evitar por nicho (tecnologia, segurança digital, criação de
+  sites, futebol); `_modelo.md` para criar outro.
 - `references/debate.md`: o debate do roteiro (rodadas, como disparar os agentes, pasta `debate/` no projeto).
-- `agents/`: os 6 agentes do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz). A skill
+- `agents/`: os 6 agentes do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz) e os 2
+  das pautas (caçador de pautas, cético de pauta). A skill
   os passa à ferramenta `Agent`; para chamá-los direto pelo nome, rode `scripts/instalar-agentes.sh` (copia para
   `~/.claude/agents/` e pergunta antes de sobrescrever).
 - `references/tecnico.md`: voz, sons, armadilhas do raea, verificação, entrega, Windows e vários idiomas.
 - `references/publicacao.md`: capa em HTML, legenda e hashtags para Reels.
 - `references/legenda.md`: tom brasileiro, estrutura e checklist da legenda.
 - `references/plataformas.md`: diferenças entre Reels, TikTok e YouTube Shorts (zonas seguras, duração, título, áudio).
-- `scripts/`: voz (`gerar-audio.ts`), sons (`baixar-sons.ts`), `emo.tsx`, `estilo.ts`, verificação (`verificar.sh`) e
+- `scripts/`: coleta de pautas (`pautas.py`, só biblioteca padrão do Python), voz (`gerar-audio.ts`), sons (`baixar-sons.ts`), `emo.tsx`, `estilo.ts`, verificação (`verificar.sh`) e
   lint de texto (`lint-texto.py`). Sem dados de marca: tudo vem do `roteiro.json` do projeto.
 - `marcas/_modelo.md`: modelo do perfil de marca. Os perfis reais (`marcas/<marca>.md`) ficam só no disco (`.gitignore`).
+- `pautas/`: coletas e `HISTORICO-PAUTAS.md`, só no disco (`.gitignore`).
 - `historico/HISTORICO-SHORTS.exemplo.md`: formato do histórico. O real (`HISTORICO-SHORTS.md`) fica só no disco.
 - `evals/evals.json`: cenários de teste da skill e do debate.

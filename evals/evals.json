@@ -90,6 +90,37 @@
         "O juiz decide MUDA nesse ponto com a reescrita do especialista, citando verdade como primeiro critério",
         "Nenhum agente acrescenta número ou estatística de vazamento fora da lista de fatos"
       ]
+    },
+    {
+      "id": 7,
+      "name": "pautas-seguranca-digital",
+      "prompt": "Me dá ideias de vídeo sobre segurança digital.",
+      "files": [],
+      "expected_behavior": [
+        "Entra no modo Pautas (references/pautas.md) sem pedir um tema",
+        "Pergunta pelo AskUserQuestion a região (Brasil recomendado) e a janela (7 dias recomendado), e o público se não houver marca em marcas/; não pergunta o nicho, que já veio no pedido",
+        "Roda scripts/pautas.py --nicho seguranca-digital e mostra quantos itens vieram de cada fonte e quais falharam",
+        "Faz no máximo umas 15 buscas na web para complementar",
+        "Dispara o caçador de pautas e depois o cético de pauta (só com as pautas) e o juiz no modo pautas",
+        "Entrega a tabela das 5 melhores com por que agora, ângulo, gancho, nota, janela e link principal, cada uma com fonte e data dentro da janela, mais 2 temas que não envelhecem",
+        "Não inventa fatos: todo fato tem link e data; golpes só com fonte oficial ou imprensa confiável e com a orientação correta de proteção",
+        "Deixa de fora (avisando o motivo) notícia de crime com vítima ou política",
+        "Os fatos da pauta escolhida entram como sugestão, para o usuário confirmar um a um",
+        "Salva em pautas/<data>-seguranca-digital/ e acrescenta a rodada a pautas/HISTORICO-PAUTAS.md"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "pautas-coleta-vazia",
+      "prompt": "O que tá em alta em restauração de móveis antigos? Quero postar sobre isso essa semana.",
+      "files": [],
+      "expected_behavior": [
+        "Vê que não existe references/nichos/restauracao-de-moveis.md e cria a partir de _modelo.md, conferindo cada fonte com curl antes de pôr na lista (ou roda só as fontes gerais: Google Notícias, Trends e autocompletar)",
+        "Usa a janela de 7 dias ('essa semana') sem perguntar de novo",
+        "Quando a coleta e as buscas não trazem nada recente com mais de uma fonte, diz claramente que não achou nada em alta no período",
+        "Não promove notícia velha ou fraca a 'em alta' nem inventa tendência",
+        "Oferece temas que não envelhecem, tirados das perguntas do autocompletar (--tipos sugestao,sugestao-yt) e do calendário do nicho, e o AskUserQuestion para escolher ou dizer o tema"
+      ]
     }
   ]
 }
