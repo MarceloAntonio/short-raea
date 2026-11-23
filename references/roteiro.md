@@ -51,6 +51,8 @@ Confira todo roteiro contra estas três falhas:
 
 Ritmo de montanha-russa: entrada rápida, meio com um pico (a revelação, a piada, o resultado) e saída muito rápida, emendando no começo.
 
+**Retenção: informação nova a cada 2 a 4 s.** Mudança quer dizer algo que o espectador não tinha: um elemento novo entra, um personagem faz uma ação, a cena muda, a câmera revela outra parte do cenário, um texto novo aparece, a cor ou a luz muda com a história. Zoom, escala que cresce e pop **não contam**: pulsar o que já está na tela não segura ninguém, só cansa. Ao escrever cada passo, diga o que entra de novo nele (vai para o campo `movimento` do `roteiro.json`). Orçamento de ênfase por vídeo de 30 a 40 s: até 2 zooms (gancho e virada), até 3 entradas em escala (o problema, a virada, o CTA), 1 tremida no impacto principal, nenhum pulso. Vocabulário e regras em `movimento.md`.
+
 **Narrativa dupla**: a fala diz uma coisa e a imagem mostra outra complementar (a fala diz "ele faz login", a imagem mostra a chave copiada girando na fechadura). Os olhos e os ouvidos recebem coisas diferentes, e a pessoa fica sem se sentir numa aula. Complementar, nunca contraditório.
 
 ## 4. Estruturas que geram envio
@@ -86,4 +88,6 @@ Quando o usuário traz um roteiro, um vídeo ou um gancho para melhorar:
 - [ ] O vídeo pede uma ação só, e é a mesma da legenda?
 - [ ] Todo número, selo e promessa está na lista de fatos?
 - [ ] Nenhum passo passa de 8 s de fala, e o total fica entre 80 e 110 palavras?
+- [ ] Cada passo tem informação nova (o que entra, que ação, que revelação), e não só zoom ou pop?
+- [ ] Zooms, pops e tremidas cabem no orçamento e estão nos momentos-chave?
 - [ ] O último quadro emenda no primeiro?

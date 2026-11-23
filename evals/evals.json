@@ -137,6 +137,23 @@
         "Passa os 5 conceitos e as últimas 5 linhas do histórico ao agente diretor-de-arte-original antes de mostrar, e troca os vetados",
         "Mostra as notas de surpresa, clareza sem som, envio e aderência, recomenda um e espera o usuário escolher"
       ]
+    },
+    {
+      "id": 10,
+      "name": "orcamento-de-enfase-pipoca",
+      "prompt": "Esse roteiro.json tá pronto pra animar? Confere o movimento antes de eu partir pro raea. (CENÁRIO DE TESTE: evals/files/roteiro-pipoca.json, com 7 zooms e 6 pops marcados como ênfase, zoom em todo passo e um botão de CTA que pulsa.)",
+      "files": [
+        "evals/files/roteiro-pipoca.json"
+      ],
+      "expected_behavior": [
+        "Lê references/movimento.md e roda scripts/contar-enfases.py no roteiro",
+        "O contar-enfases.py reprova: zoom 7 (máx 2), pop 6 (máx 3) e zoom fora do gancho e da virada",
+        "Aponta o botão do CTA que pulsa como pipoca (pulso tem orçamento 0), mesmo sem estar marcado como ênfase",
+        "Passa o roteiro ao crítico e ao juiz (references/debate.md); o item 'pipoca' aparece na crítica",
+        "O juiz manda trocar o excesso por elementos novos entrando na cena, passo a passo (o que entra e como: desliza, cai, é colocado, abre, acende, é desenhado), e não por zooms menores ou mais suaves",
+        "Mantém no máximo 2 zooms (gancho e virada), até 3 pops (problema, virada, CTA) e nenhum pulso na versão sugerida",
+        "Não muda narração, gancho, virada, CTA nem fatos; não altera nem re-renderiza vídeos já feitos"
+      ]
     }
   ]
 }

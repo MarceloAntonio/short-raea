@@ -9,6 +9,7 @@ Serve para escolher a cara de cada Short novo do canal de TI (Linux, DevOps, red
 3. No máximo 1 forma recorrente dos 3 últimos pode voltar (por exemplo, o mesmo cubo ou o mesmo círculo com bolinhas).
 4. O visual "limpo/abstrato" (formas geométricas, partículas, prédios brilhando) é a entrada 1, **Abstrato com brilho (seguro)**. Só entra marcada como (seguro) e com o público para o qual funciona, descrito na própria entrada.
 5. Registre a estética escolhida no histórico junto com o vídeo.
+6. Cada estética tem os próprios movimentos: como os elementos entram, como a cena troca e o que a câmera faz estão em `movimento.md`, seção 5, com os mesmos números deste catálogo. Use esses movimentos em vez de zoom e pop; é isso que faz dois vídeos com o mesmo tema não parecerem iguais.
 
 Regras do projeto valem para todas: sem imagem ou vídeo gerado por IA, fontes locais (baixar o arquivo da fonte do Google Fonts e carregar localmente), sons CC0 do Freesound, peças que se sobrepõem de propósito precisam de `allowOverlap`, `Text3D` é centralizado na posição, instâncias têm contagem fixa (esconder com tamanho 0.001), sem `Intl`.
 
@@ -100,7 +101,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: fundo azul-cianotipia com grade fina; objetos desenhados só em linhas brancas (arestas), cotas com setas, legendas em caixas, carimbo no canto. As linhas se desenham aos poucos.
 - **Paleta**: #0d3b66 (azul fundo), #1b5a99 (grade), #f4f9ff (linha branca), #8ecae6 (linha secundária), #ffd166 (destaque raro).
 - **Tipografia**: monoespaçada ou letra de projetista, por exemplo Share Tech Mono ou IBM Plex Mono; títulos em caixa alta com espaçamento.
-- **Câmera**: ortográfica frontal ou isométrica, deslocamento lento como mesa de desenho; zoom em detalhe com cota.
+- **Câmera**: ortográfica frontal ou isométrica, deslocamento lento como mesa de desenho; o detalhe com cota entra por corte (zoom só se for um dos 2 do orçamento).
 - **Trilha**: sons de mesa técnica, pulso discreto de sintetizador, clique de régua; efeitos de lápis riscando e papel vegetal.
 - **Serve para**: arquitetura de sistemas, topologia de rede, anatomia de um protocolo, diagrama de pipeline, explicação passo a passo.
 - **Difícil no raea**: linhas finas em 3D não vêm prontas. Opção 1: renderizar em HTML/SVG por cima com `stroke-dashoffset` animado (mais simples e nítido). Opção 2: `Outline` sobre cubos com material branco. Cotas e setas em SVG. Usar o 2D como base e o 3D só se precisar de giro.
@@ -111,7 +112,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: monitor CRT antigo com tela abaulada e brilho âmbar em sala escura, texto aparecendo caractere a caractere, linhas de varredura e leve cintilação. Cursor piscando como ritmo.
 - **Paleta**: #0a0703 (fundo), #ffb000 (âmbar), #ff7a00 (âmbar quente), #5c3b00 (âmbar apagado), #2b2b2b (carcaça).
 - **Tipografia**: monoespaçada de terminal, por exemplo VT323 ou IBM Plex Mono.
-- **Câmera**: close na tela com leve zoom; corte para plano aberto do monitor na mesa; tremor mínimo.
+- **Câmera**: close fixo na tela; corte para plano aberto do monitor na mesa; tremor mínimo.
 - **Trilha**: drone grave de transformador, teclado mecânico, bipes; ventoinha, relê, estática e disquete (Freesound).
 - **Serve para**: Linux, shell, logs, sysadmin, invasão e incidentes históricos, qualquer comando mostrado na tela.
 - **Difícil no raea**: o texto é HTML/CSS por cima ou `Text3D` na tela; scanlines com gradiente repetido e `Bloom` baixo. Distorção de lente só vale no 3D (`Fisheye`/`LensDistortion` não curvam o HTML). Para a curvatura, desenhe o texto em um plano curvo ou aceite tela plana. Foi uma das estéticas originais do canal; checar o histórico antes de repetir.
@@ -144,7 +145,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: quadro dividido em painéis com bordas grossas, retícula (meio-tom) nas sombras, onomatopeias grandes ("BZZT", "404"), balões de fala e legendas em caixas amarelas.
 - **Paleta**: #fff8e7 (papel), #111111 (traço), #e63946 (vermelho), #ffd23f (amarelo), #3a86ff (azul).
 - **Tipografia**: letra de quadrinho em caixa alta, por exemplo Bangers para ruídos e Comic Neue ou Patrick Hand para balões.
-- **Câmera**: painéis que entram em sequência com zoom; "câmera" é o corte entre painéis; tremor nos impactos.
+- **Câmera**: painéis que entram em sequência deslizando ou virando; "câmera" é o corte entre painéis; tremor só no impacto principal.
 - **Trilha**: orquestra de jazz de desenho ou rock curto; sons de impacto, whoosh, sino e "tum" de página virando.
 - **Serve para**: narrativa de incidente com diálogo (suporte x usuário), mitos de segurança, comparação de duas opções em painéis.
 - **Difícil no raea**: painéis e balões em HTML/CSS com `clip-path`; cena dentro de cada painel em `Canvas3D` com `<Look mode="cartoon" />` e `ToonMaterial` com contorno. Balão com rabinho: `clip-path: polygon`. Vários Canvas3D ao mesmo tempo pesam; use um só e recorte por máscara.
@@ -199,7 +200,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: pergaminho envelhecido com costas desenhadas, rosa dos ventos, rotas pontilhadas, monstros marinhos e legendas caligráficas; a rota do dado ou do ataque é traçada como uma viagem.
 - **Paleta**: #e8d5a8 (pergaminho), #b08d57 (ocre), #6b4226 (tinta marrom), #3a6b7e (azul mar desbotado), #9b2226 (vermelho carimbo).
 - **Tipografia**: caligráfica ou serifada antiga, por exemplo IM Fell English ou Cinzel Decorative.
-- **Câmera**: travelling sobre o mapa em ângulo quase zenital, zoom em ilhas; rolagem lateral.
+- **Câmera**: travelling sobre o mapa em ângulo quase zenital, a rota desenhada leva a câmera de ilha em ilha; rolagem lateral.
 - **Trilha**: alaúde, flauta e tambor suave; ondas, vento, tinta riscando e pergaminho abrindo.
 - **Serve para**: rotas de rede (traceroute), histórico de uma intrusão por países, topologia da internet, cabos submarinos.
 - **Difícil no raea**: textura de pergaminho precisa de ruído (gradiente + `Look` com grão; sem imagem gerada por IA). Rotas pontilhadas em SVG com `stroke-dasharray` animado. Monstros: silhuetas simples em SVG. Melhor em 2D com leve inclinação 3D num plano (`ImagePlane`).
@@ -210,7 +211,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: tela com moldura de console genérico, barras de vida e de mana, menu de comandos, caixas de diálogo com texto digitando, inventário e "fase" com nome; a situação vira uma batalha ou fase.
 - **Paleta**: #0f0f1b (fundo), #00e436 (verde de vida), #ff004d (vermelho de dano), #29adff (azul), #fff1e8 (texto).
 - **Tipografia**: fonte pixel, por exemplo Press Start 2P ou VT323.
-- **Câmera**: plano fixo de tela de jogo; tremor curto em dano; zoom por corte.
+- **Câmera**: plano fixo de tela de jogo; tremor curto só no dano principal; troca de plano por corte.
 - **Trilha**: chiptune de batalha, arpejos rápidos; blips de menu, dano, vitória e "game over" (todos de Freesound CC0, sem copiar melodias conhecidas).
 - **Serve para**: ataques e defesas como combate, "boss" de incidente, métricas como barras de vida (disponibilidade, risco).
 - **Difícil no raea**: quase tudo em HTML/CSS (barras, menus, caixas com `border` pixelado via `box-shadow`); a "fase" pode ser `Canvas3D` com `<Look mode="pixel">`. Não copiar personagens, interface ou música de jogo existente: inventar elementos próprios.
@@ -221,7 +222,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: prancheta ou ficha de exame em papel branco, campos preenchidos à caneta, carimbos de "REPROVADO" ou "POSITIVO", amostras em tubos de ensaio, lupa e gráfico de resultado.
 - **Paleta**: #fbfbf8 (papel), #1a4d8f (azul caneta), #c62828 (carimbo), #2e7d32 (aprovado), #8d99ae (linhas da ficha).
 - **Tipografia**: sans clínica, por exemplo Source Sans 3, com letra manuscrita para preenchimento (por exemplo Caveat) e carimbo em Special Elite.
-- **Câmera**: zenital sobre a mesa, deslocamento de campo para campo; zoom em carimbo.
+- **Câmera**: zenital sobre a mesa, deslocamento de campo para campo; o carimbo desce sobre a ficha.
 - **Trilha**: instrumental clínico e quieto, relógio; caneta, carimbo batendo, clip de prancheta e máquina de exame.
 - **Serve para**: análise de malware, auditoria, checklist de segurança, teste de vulnerabilidade, resultado de pentest.
 - **Difícil no raea**: melhor em 2D com HTML; caneta aparecendo com `clip-path` ou `stroke-dashoffset`. Tubos de ensaio em 3D: `Cylinder` com material de vidro (transmissão) pesa; usar poucos e com `Bloom` desligado.
@@ -243,7 +244,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: palco com cortinas vermelhas, bastidores de papelão, bonecos de fantoche ou marionete com fios visíveis, cenário em camadas de painéis e luz de refletor.
 - **Paleta**: #7b1e2b (cortina), #e9c46a (dourado), #2b2d42 (fundo do palco), #f1faee (luz), #457b9d (cenário azul).
 - **Tipografia**: cartaz de teatro, por exemplo Abril Fatface ou Rye; legendas em serifada simples.
-- **Câmera**: plano frontal de plateia, leves zooms; corte para vista dos bastidores; cortina abre e fecha.
+- **Câmera**: plano frontal de plateia, fixo; corte para vista dos bastidores; cortina abre e fecha.
 - **Trilha**: acordeão ou piano de teatro, marcha curta; cortina deslizando, aplausos, tábua de palco rangendo (Freesound).
 - **Serve para**: histórias de incidente em atos, comédia de erros, "dois sistemas conversando", golpes de engenharia social.
 - **Difícil no raea**: palco em `Cuboid`s e painéis; fantoche como esferas e cilindros; fios de marionete como cilindros finos. Cortinas com dobras: `Cuboid` repetidos com escala variável e `Instances`. Sombras de refletor com `SpotLight` e `Shadows`.
@@ -276,7 +277,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: fundo escuro azulado, objetos translúcidos em tons de azul e branco mostrando o interior (ossos, circuitos, chips, cabos), com brilho nas bordas e feixe de varredura.
 - **Paleta**: #02121f (fundo), #1c7ed6 (azul), #74c0fc (azul claro), #e7f5ff (branco), #ff6b6b (anomalia).
 - **Tipografia**: técnica, por exemplo Orbitron ou Rajdhani, em rótulos finos com linhas de chamada.
-- **Câmera**: plano fixo de exame com leve deslocamento lateral; zoom na anomalia; varredura de cima para baixo.
+- **Câmera**: plano fixo de exame com leve deslocamento lateral; a anomalia é revelada pela varredura (zoom só se for um dos 2 do orçamento); de cima para baixo.
 - **Trilha**: sons de máquina de tomografia, bipes baixos, zumbido eletrônico; clique do disparo e respiração de aparelho.
 - **Serve para**: "o que há dentro" de um dispositivo, malware escondido, firmware, backdoor em hardware, exame de um pacote de rede.
 - **Difícil no raea**: transparência sorteada ordem pode dar erros; usar materiais com `alpha_mode` aditivo e fresnel (emissivo nas bordas, centro escuro), `Bloom` baixo. Vazado de camadas com `Cuboid` finos em fila. Inversão de cor (negativo) via `Grade`.
@@ -375,7 +376,7 @@ No histórico aparece como "formas abstratas com brilho".
 - **Cena**: diagrama de linhas coloridas com ângulos de 45 e 90 graus, estações como círculos e traços, trens como pontos que percorrem a linha; o fluxo do dado ou da dependência vira trajeto.
 - **Paleta**: #ffffff (fundo), #e63946 (linha vermelha), #1d70b8 (linha azul), #2a9d4f (linha verde), #f4a300 (linha amarela).
 - **Tipografia**: sans neutra de sinalização, por exemplo Inter ou Public Sans, em peso médio, rótulos horizontais.
-- **Câmera**: 2D com pan e zoom nas estações; trem como ponto guia; sem perspectiva.
+- **Câmera**: 2D com pan seguindo o trem; trem como ponto guia; sem perspectiva.
 - **Trilha**: eletrônica leve e rítmica, piano curto; anúncio de estação (sem voz clonada), portas fechando, trilho e freio.
 - **Serve para**: roteamento, dependências entre serviços, pipeline com estágios, histórico de versões, "baldeação" entre sistemas.
 - **Difícil no raea**: puro 2D (SVG ou HTML) com animação de `stroke-dashoffset` e pontos seguindo o caminho; o 3D não ajuda aqui. Garantir espaço para o texto e linhas separadas por pelo menos 24 px.

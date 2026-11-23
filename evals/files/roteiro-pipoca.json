@@ -1,0 +1,195 @@
+{
+ "meta": {
+  "titulo": "cenário de teste: pipoca",
+  "fps": 30
+ },
+ "fatos": [
+  {
+   "texto": "o Linux procura comandos nas pastas do PATH, da esquerda para a direita",
+   "status": "aprovado"
+  }
+ ],
+ "gancho": {
+  "id": "gancho",
+  "narracao": "Você digita ls e o Linux acha o programa. Como?",
+  "movimento": {
+   "entra": "ícone do terminal",
+   "como": "spring de escala 0→1",
+   "camera": "punch-in",
+   "enfases": [
+    {
+     "tipo": "zoom",
+     "enfase": true,
+     "em": {
+      "palavra": "ls"
+     },
+     "alvo": "camera"
+    },
+    {
+     "tipo": "pop",
+     "enfase": true,
+     "em": {
+      "palavra": "ls"
+     },
+     "alvo": "ícone do terminal"
+    }
+   ]
+  }
+ },
+ "passos": [
+  {
+   "id": "lista",
+   "narracao": "Ele olha uma lista de pastas chamada PATH.",
+   "movimento": {
+    "entra": "etiqueta PATH",
+    "como": "spring de escala 0→1",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "PATH"
+      },
+      "alvo": "camera"
+     },
+     {
+      "tipo": "pop",
+      "enfase": true,
+      "em": {
+       "palavra": "PATH"
+      },
+      "alvo": "etiqueta PATH"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ordem",
+   "narracao": "Da esquerda para a direita, uma por uma.",
+   "movimento": {
+    "entra": "3 pastas",
+    "como": "spring de escala 0→1",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "direita"
+      },
+      "alvo": "camera"
+     },
+     {
+      "tipo": "pop",
+      "enfase": true,
+      "em": {
+       "palavra": "uma"
+      },
+      "alvo": "pastas"
+     }
+    ]
+   }
+  },
+  {
+   "id": "achou",
+   "narracao": "Achou na primeira? Para ali.",
+   "movimento": {
+    "entra": "check verde",
+    "como": "spring de escala 0→1",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "primeira"
+      },
+      "alvo": "camera"
+     },
+     {
+      "tipo": "pop",
+      "enfase": true,
+      "em": {
+       "palavra": "Para"
+      },
+      "alvo": "check verde"
+     }
+    ]
+   }
+  },
+  {
+   "id": "virada",
+   "narracao": "Mas se o programa está fora da lista, não existe.",
+   "movimento": {
+    "entra": "X vermelho",
+    "como": "spring de escala 0→1",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "fora"
+      },
+      "alvo": "camera"
+     },
+     {
+      "tipo": "pop",
+      "enfase": true,
+      "em": {
+       "palavra": "existe"
+      },
+      "alvo": "X vermelho"
+     }
+    ]
+   }
+  },
+  {
+   "id": "regancho",
+   "narracao": "E pasta antes da hora pode rodar o programa errado.",
+   "movimento": {
+    "entra": "pasta suspeita",
+    "como": "spring de escala 0→1",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "errado"
+      },
+      "alvo": "camera"
+     },
+     {
+      "tipo": "pop",
+      "enfase": true,
+      "em": {
+       "palavra": "errado"
+      },
+      "alvo": "pasta suspeita"
+     }
+    ]
+   }
+  },
+  {
+   "id": "cta",
+   "narracao": "Manda pra quem vive com command not found.",
+   "movimento": {
+    "entra": "botão",
+    "como": "pulsa no ritmo da música",
+    "camera": "punch-in",
+    "enfases": [
+     {
+      "tipo": "zoom",
+      "enfase": true,
+      "em": {
+       "palavra": "Manda"
+      },
+      "alvo": "camera"
+     }
+    ]
+   }
+  }
+ ]
+}

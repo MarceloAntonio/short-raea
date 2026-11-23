@@ -30,6 +30,7 @@ Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase ind
 | `marcas/<marca>.md` | Fase 1, se existir: cores, fontes, logos, fatos aprovados, CTA, vetos, voz |
 | `references/conceitos.md` | Fase 2: motores, formatos que puxam ação, clichês |
 | `references/esteticas.md` | Fase 2: catálogo de estéticas (cena, paleta, tipografia, câmera, trilha, para que tema serve, o que é difícil no raea) |
+| `references/movimento.md` | Fase 2 (como cada estética se mexe) e fase 4: o que conta como mudança, orçamento de ênfase, vocabulário de movimentos, câmera, pipoca |
 | `references/roteiro.md` | Fase 3 e modo crítica: gancho em 3 camadas, as 3 falhas, estruturas de envio |
 | `references/pautas.md` | Modo Pautas e fase 1 sem tema: perguntas, coleta, caçador, cético e juiz, o que entregar |
 | `references/nichos/<nicho>.md` | Modo Pautas: fontes, termos, calendário fixo e o que evitar de cada nicho (`_modelo.md` para criar outro) |
@@ -40,7 +41,7 @@ Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase ind
 | `references/legenda.md` | Fase 5 e modo legenda: tom brasileiro, estrutura, checklist |
 | `references/plataformas.md` | Fase 4 e fase 5, se o vídeo sai também no TikTok ou no YouTube Shorts: zonas seguras, duração, título, hashtags, áudio |
 | `historico/HISTORICO-SHORTS.md` | Fase 2 e fase 5: um vídeo por linha, com estética, formas recorrentes e resultados (fora do git; o formato está em `HISTORICO-SHORTS.exemplo.md`) |
-| `scripts/` | Pautas (`pautas.py`), fases 4 e 5: voz, sons, `emo()`, estilo, verificação e lint de texto (lista em `references/tecnico.md`, seção 10) |
+| `scripts/` | Pautas (`pautas.py`), fases 4 e 5: voz, sons, `emo()`, estilo, verificação, contagem de ênfases e lint de texto (lista em `references/tecnico.md`, seção 10) |
 
 ## Modos (escolha pelo pedido)
 
@@ -64,8 +65,8 @@ Copie esta lista no `plan.org` (ou na lista de tarefas) e marque cada item ao te
 - [ ] 1. Grill me respondido (7 itens) e marca carregada; sem tema, pautas pesquisadas, uma escolhida e os fatos dela confirmados um a um
 - [ ] 2. 5 conceitos com 5 estéticas diferentes (1 "(ousado)"), passados pelo diretor-de-arte-original; usuário escolheu um
 - [ ] 3. Debate do roteiro (até 2 rodadas) salvo em debate/; roteiro final, PARO/PASSO e veredito mostrados; usuário aprovou
-- [ ] 4. roteiro.json com deixas por palavra; checagem de deixas sem faltas
-- [ ] 5. Voz, sons, cenas, legendas e CTA no raea
+- [ ] 4. roteiro.json com deixas por palavra e `movimento` em cada passo; checagem de deixas sem faltas; `contar-enfases.py` dentro do orçamento
+- [ ] 5. Voz, sons, cenas, legendas e CTA no raea, sem pipoca (elementos entram com movimento da estética, nada pulsa)
 - [ ] 6. Verificação medida OK e rolador de feed com os quadros do MP4 (senão, volte ao 5)
 - [ ] 7. Cópia AAC, capa e legenda entregues
 - [ ] 8. Histórico (com Estética e Formas recorrentes) e AGENTS.md atualizados; intermediários apagados
@@ -95,7 +96,7 @@ Ao fim, ofereça salvar as respostas estáveis (cores, fontes, fatos, CTA, vetos
 
 1. Leia o histórico (se não existir, copie `historico/HISTORICO-SHORTS.exemplo.md` e apague a linha fictícia). O vídeo novo difere do último em pelo menos 4 das 7 colunas: conceito, formato, câmera, gancho, final, paleta e trilha. Quem segue a página vê o mesmo vídeo com outro texto e passa direto. Se a marca tem uma série em andamento, o conceito pode continuar a série, mas a câmera, o gancho e o final mudam. Use a **média da conta** (pulados, tempo médio, envios, salvamentos, seguidores dos vídeos da mesma marca no histórico) como referência: o conceito novo ataca a métrica que mais ficou abaixo dela, e não um número absoluto de outro perfil.
 2. **Variedade visual**, além da regra das 4 de 7: a estética do vídeo novo não pode ter aparecido em nenhum dos 3 últimos vídeos do histórico (coluna Estética), e no máximo 1 forma recorrente desses 3 vídeos pode voltar (coluna Formas recorrentes). Conteúdo bom com a mesma cara em todo vídeo vira um vídeo só para quem segue a página.
-3. Leia `references/conceitos.md` e `references/esteticas.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também) e **5 estéticas diferentes entre si**. Para cada um: a estética, o gancho do primeiro 1,5 s nas 3 camadas (imagem, fala, texto na tela), a imagem central, a virada, o momento de envio e o final.
+3. Leia `references/conceitos.md` e `references/esteticas.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também) e **5 estéticas diferentes entre si**. Para cada um: a estética (com o jeito de se mexer dela, `references/movimento.md`, seção 5), o gancho do primeiro 1,5 s nas 3 camadas (imagem, fala, texto na tela), a imagem central, a virada, o momento de envio e o final.
    - Pelo menos 1 conceito é **"(ousado)"**: uma estética que ainda não aparece no histórico e é mais arriscada de fazer.
    - Visual limpo/abstrato (formas geométricas, partículas, prédios brilhando) pode, mas como escolha: marque **"(seguro)"** e diga em uma linha para que público ele funciona melhor.
 4. **Diretor de arte** (`agents/diretor-de-arte-original.md`, como em `references/debate.md`): passe a ele os 5 conceitos e as últimas 5 linhas do histórico. Ele veta o conceito que repete estética recente ou depende das formas recorrentes e sugere uma estética do catálogo para cada aprovado. Troque os vetados antes de mostrar.
@@ -107,6 +108,7 @@ Ao fim, ofereça salvar as respostas estáveis (cores, fontes, fatos, CTA, vetos
 2. Regras da narração (o roteirista as segue; confira na versão final): português do Brasil coloquial, sem cara de anúncio, **80 a 110 palavras** (com o Liam a 1,15, cerca de 3 palavras por segundo, sem contar pausas). Nenhum passo passa de 8 s de fala; troque lista falada por uma frase de impacto e deixe a imagem mostrar o resto. Ligue os passos com "mas" e "então", nunca com "e aí". Passe a narração por `scripts/lint-texto.py --texto "..."` (ou no `roteiro.json`) e reescreva o que ele apontar.
 3. Confira as **3 falhas** (gancho fraco, sem escalada, virada enterrada) e o teste da promessa: o gancho promete o que o vídeo entrega? Mostre o roteiro final, o PARO/PASSO do rolador-de-feed, a tabela do veredito (ponto | quem levantou | FICA/SAI/MUDA | motivo), as notas e a duração estimada, e **espere aprovação**. A decisão é do usuário, não do juiz.
 4. Monte o `roteiro.json`: passos, narração, elementos, câmera, overlays, efeitos sonoros, CTA e `fatos` (cada um com status e, se veio de pesquisa, `fonte` e `data`). Prenda cada acontecimento a uma **palavra da fala** (`{ "palavra": "cair" }`), não a segundos: quando a voz muda, tudo continua no lugar.
+   - Cada passo ganha o campo **`movimento`**: o que entra, como entra e o que a câmera faz. Cada zoom, pop ou tremida vai em `movimento.enfases` com `"enfase": true`, para dar para contar (`references/movimento.md`, seção 2). Rode `scripts/contar-enfases.py roteiro.json` antes de animar.
 5. Use o projeto modelo só como **estrutura** (linha do tempo, deixas por palavra, legendas, `emo()`, fontes; caminhos em `references/tecnico.md`). Invente as cenas do zero.
 6. Se o vídeo vai sair em mais de um idioma, escreva já sabendo disso (`references/tecnico.md`, seção 8).
 
@@ -116,12 +118,12 @@ Siga a skill `raea` para workspace, projeto, `raea context .`, `brief.ts` e `pla
 
 1. **Voz**: `scripts/gerar-audio.ts` → MP3 por passo e `narracao.json` com o tempo de cada palavra. Use `--previa` para conferir cenas e deixas antes de gastar créditos.
 2. **Sons e música**: Freesound CC0, escolhidos pela descrição, baixados com `scripts/baixar-sons.ts` (créditos anotados).
-3. **Cena, overlays, legendas e CTA**, contornando as armadilhas do raea da referência. O primeiro quadro precisa ler sozinho com o vídeo pausado: é ele que aparece no feed antes do play.
+3. **Cena, overlays, legendas e CTA**, contornando as armadilhas do raea da referência. Anime com `references/movimento.md` aberto: cada elemento entra com um movimento que faz sentido na cena (deslizar, cair, ser colocado, abrir, acender, desenhar, revelar, corte seco), do jeito da estética; a câmera faz um movimento contínuo e motivado em vez de zooms curtos. Zoom, pop e tremida só dentro do orçamento e marcados no roteiro; nada que já está na tela pulsa, respira ou cresce. O primeiro quadro precisa ler sozinho com o vídeo pausado: é ele que aparece no feed antes do play.
 4. **CTA no padrão do site da marca**: leia o CSS do site (cores, fontes, raio, botões) e copie essa linguagem. Fechamento genérico parece template.
 
 ## Fase 5. Verificar e entregar
 
-Rode `scripts/verificar.sh compositions/X.tsx out/X-vN.mp4`; se falhar, volte à fase 4. Ele não olha nem ouve: confira também a folha de quadros-chave e meça os efeitos contra a voz (`references/tecnico.md`, seção 5). **Só diga que está pronto mostrando o relatório do script.**
+Rode `scripts/verificar.sh compositions/X.tsx out/X-vN.mp4` (inclui o `contar-enfases.py`); se falhar, volte à fase 4. Tela parada se corrige com **informação nova** (um elemento que entra, uma faixa de texto, a cena ou a luz que muda), nunca com zoom ou pulso (`references/movimento.md`, seção 7). Ele não olha nem ouve: confira também a folha de quadros-chave e meça os efeitos contra a voz (`references/tecnico.md`, seção 5). **Só diga que está pronto mostrando o relatório do script.**
 
 Rode também o **rolador-de-feed com o render**: o quadro 0 e os quadros de 0,5 s, 1 s, 1,5 s e 3 s do MP4, sem som (`references/debate.md`, seção 5). O primeiro quadro real nem sempre bate com o planejado no roteiro. Se der PASSO, avise antes de entregar e sugira o que mudar no começo.
 
@@ -146,7 +148,7 @@ Depois:
 ## Regras que valem o tempo todo
 
 - **Ação pedida no vídeo**: o vídeo **pede** a ação que quer, dentro dele e não só na legenda. Comentário = pergunta com resposta de um toque; envio = um momento que a pessoa manda para alguém específico; salvamento = algo para consultar depois; seguir = promessa de continuação. Marca e solução antes dos 20 s. CTA de 2 a 3 s, emendando no loop.
-- **Retenção**: gancho nas 3 camadas no primeiro 1,5 s; alguma mudança na tela a cada 2 a 4 s; uma metáfora visual central que volta; um re-gancho no meio; a virada transforma a imagem do problema; o último quadro encaixa no primeiro.
+- **Retenção**: gancho nas 3 camadas no primeiro 1,5 s; **informação nova** na tela a cada 2 a 4 s (um elemento novo entra, um personagem faz uma ação, a cena muda, a câmera revela outra parte do cenário, um texto novo aparece, a cor ou a luz muda com a história; zoom, escala que cresce e pop **não contam** como mudança); orçamento de ênfase por vídeo de 30 a 40 s: até 2 zooms (só gancho e virada), até 3 entradas em escala (problema, virada, CTA), 1 tremida no impacto principal, nenhum pulso (`references/movimento.md`); uma metáfora visual central que volta; um re-gancho no meio; a virada transforma a imagem do problema; o último quadro encaixa no primeiro.
 - **Verdade**: só os fatos aprovados; na dúvida, suavize ou pergunte. Em afirmação técnica (segurança, TI), cubra o caso de quem já está protegido; um especialista que assiste comenta a lacuna. Logos só dos arquivos reais. Nada de imagem ou vídeo gerado por IA. Nada é "em alta" sem fonte com data; tragédia, crime com vítima e política não viram pauta de marca.
 - **Agentes do debate**: todo agente que recebe o roteiro recebe também a lista de fatos e não pode acrescentar número, selo ou promessa fora dela. Nenhum agente lê `~/api/` nem escreve arquivos: quem salva a pasta do debate é você.
 - **Segredos**: chaves só em `~/api/`, lidas para uma variável e enviadas só no cabeçalho do serviço. Nunca imprima o conteúdo desses arquivos nem varra o disco atrás deles.

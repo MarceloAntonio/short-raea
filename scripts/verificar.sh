@@ -2,7 +2,7 @@
 # Verificação medida antes de dizer que o vídeo está pronto (fase 5 do SKILL.md).
 # uso: scripts/verificar.sh compositions/X.tsx out/X-vN.mp4
 #
-# Roda, em ordem: raea check --quick, deixas do roteiro × narração, nomes de componente repetidos,
+# Roda, em ordem: raea check --quick, deixas do roteiro × narração, nomes de componente repetidos, orçamento de ênfase,
 # duração (≤ 60 s), loudness (cerca de -14 LUFS, pico ≤ -1 dBTP), trechos de mais de 3 s sem mudança
 # na tela e quadro 0 vazio ou escuro. Sai com 1 se algo falhar.
 #
@@ -76,6 +76,17 @@ repetidos=$(find "$PROJ/components" "$PROJ/compositions" -name '*.tsx' -not -pat
   done)
 [ -z "$repetidos" ] && ok "nomes repetidos" "nenhum" || falha "nomes repetidos" "$(printf '%s' "$repetidos" | tr '\n' ';')"
 
+# 3b. Orçamento de ênfase: zoom, pop, tremida e pulso do roteiro e escala animada no código (references/movimento.md)
+PY=$(command -v python3 || command -v python)
+if [ -z "$PY" ]; then
+  falha "ênfases" "falta python3 no PATH"
+elif saida=$("$PY" "$(dirname "$0")/contar-enfases.py" "$ROTEIRO" "$PROJ/components" 2>&1); then
+  ok "ênfases" "$(printf '%s\n' "$saida" | head -n 1)"
+else
+  printf '%s\n' "$saida" | sed -n '/^código/,/^REPROVADO/p' | grep -v '^REPROVADO' >&2
+  falha "ênfases" "$(printf '%s\n' "$saida" | grep '^REPROVADO' | cut -c1-400) → troque o excesso por informação nova"
+fi
+
 # 4. Duração
 dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$VIDEO" | tr -d '\r')
 dur=$(awk -v d="$dur" 'BEGIN { printf "%.1f", d }')
@@ -105,7 +116,8 @@ paradas=$(ffmpeg -hide_banner -i "$VIDEO" -vf "select='gt(scene,0.02)',showinfo"
     BEGIN { ant = 0 }
     { if ($1 - ant > lim) printf "%.1f-%.1fs ", ant, $1; ant = $1 }
     END { if (fim - ant > lim) printf "%.1f-%.1fs ", ant, fim }')
-[ -z "$paradas" ] && ok "tela parada" "nenhum trecho > ${PARADA_SEG}s" || falha "tela parada" "$paradas"
+[ -z "$paradas" ] && ok "tela parada" "nenhum trecho > ${PARADA_SEG}s" ||
+  falha "tela parada" "$paradas→ acrescente informação nova (elemento que entra, faixa de texto, cena ou luz que muda), nunca zoom ou pulso"
 
 # 7. Quadro 0: vira a miniatura antes do play; não pode ser escuro nem uma cor só
 stats=$(ffmpeg -hide_banner -i "$VIDEO" -vf "select='eq(n,0)',signalstats,metadata=print" -frames:v 1 -an -f null - 2>&1 | tr -d '\r')

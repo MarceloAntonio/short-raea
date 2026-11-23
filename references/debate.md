@@ -18,12 +18,12 @@ Cada um é um arquivo em `agents/`, com o papel, o que recebe, o que é proibido
 | Agente | Arquivo | Recebe | Modelo |
 |---|---|---|---|
 | roteirista | `agents/roteirista.md` | brief, conceito, fatos, marca; depois, roteiro anterior + veredito | sonnet |
-| crítico | `agents/critico.md` | roteiro, brief, fatos | sonnet |
+| crítico | `agents/critico.md` | roteiro (com o `movimento` de cada passo, se já houver), brief, fatos | sonnet |
 | defensor | `agents/defensor.md` | roteiro, brief, fatos | sonnet |
 | rolador-de-feed | `agents/rolador-de-feed.md` | **só** os primeiros 3 s: quadro 0 (descrição ou imagem), texto na tela, fala do gancho marcada "com som" | haiku |
 | especialista-chato | `agents/especialista-chato.md` | roteiro, brief, fatos | sonnet |
 | juiz | `agents/juiz.md` | roteiro, brief, fatos + as 4 saídas | opus |
-| diretor-de-arte-original (fase 2, antes do debate) | `agents/diretor-de-arte-original.md` | os 5 conceitos com a estética de cada um, as últimas 5 linhas do histórico e o caminho de `references/esteticas.md` | sonnet |
+| diretor-de-arte-original (fase 2, antes do debate) | `agents/diretor-de-arte-original.md` | os 5 conceitos com a estética de cada um, as últimas 5 linhas do histórico e os caminhos de `references/esteticas.md` e `references/movimento.md` | sonnet |
 
 Regras de todos:
 - Quem recebe o roteiro recebe também a **lista de fatos**, e é proibido de acrescentar número, selo ou promessa fora dela.

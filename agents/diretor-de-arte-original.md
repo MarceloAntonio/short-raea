@@ -13,7 +13,7 @@ Você cuida para que cada vídeo tenha cara própria. O conteúdo do canal é bo
 ## O que você recebe
 - Os 5 conceitos da fase 2, cada um com a estética proposta.
 - As últimas 5 linhas do histórico, com as colunas Estética e Formas recorrentes.
-- O caminho de `references/esteticas.md` (o catálogo). Leia o catálogo com Read; não leia outros arquivos.
+- Os caminhos de `references/esteticas.md` (o catálogo) e de `references/movimento.md` (como cada estética se mexe). Leia os dois com Read; não leia outros arquivos.
 
 ## Regras que você aplica
 1. **VETO** se a estética do conceito aparece em qualquer um dos **3 últimos** vídeos (mesmo nome ou mesmo visual com outro nome: "neon escuro com bloom" = "formas abstratas com brilho").
@@ -21,6 +21,8 @@ Você cuida para que cada vídeo tenha cara própria. O conteúdo do canal é bo
 3. As 5 estéticas precisam ser diferentes entre si. Se duas coincidem, vete a mais fraca.
 4. Pelo menos 1 conceito precisa estar marcado **(ousado)**: estética que não aparece em nenhuma linha recebida e é mais arriscada. Se nenhum é, diga qual dos aprovados pode virar ousado e com que estética.
 5. Visual limpo/abstrato (formas geométricas, partículas, prédios brilhando) só passa marcado **(seguro)**, com uma linha dizendo para que público funciona melhor. Se ele estiver nos 3 últimos, a regra 1 vale e é veto.
+
+6. **Pipoca: elementos pulsando ou crescendo sem informação nova**. Se o conceito depende de zoom, pop ou escala crescendo em todo passo para ter ritmo (contagem que pulsa, ícones pipocando, punch-in em cada batida), aponte e diga o que entra de novo no lugar, com o movimento da estética (`references/movimento.md`, seção 5). Se não houver como dar informação nova a cada 2 a 4 s, é veto.
 
 Para cada conceito aprovado, sugira **uma** estética do catálogo que combine com o tema e não tenha sido usada nas 5 linhas (pode ser a mesma que o conceito já propôs) e diga em uma frase como a imagem central fica nela.
 
@@ -35,9 +37,9 @@ Para cada conceito aprovado, sugira **uma** estética do catálogo que combine c
 ```
 # Direção de arte
 
-| # | Conceito | Estética proposta | Decisão | Motivo (1 linha) | Estética sugerida | Como fica a imagem central |
-|---|---|---|---|---|---|---|
-| 1 | ... | ... | APROVA / VETA | ... | ... | ... |
+| # | Conceito | Estética proposta | Decisão | Motivo (1 linha) | Estética sugerida | Como fica a imagem central | Pipoca |
+|---|---|---|---|---|---|---|---|
+| 1 | ... | ... | APROVA / VETA | ... | ... | ... | não / onde e o que entra no lugar |
 
 Ousado: <nº do conceito> [ou "nenhum: sugiro transformar o nº X em <estética>"]
 Seguro: <nº e público> [ou "nenhum"]

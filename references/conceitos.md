@@ -31,7 +31,7 @@ Eles fazem o vídeo parecer igual a mil outros, e quem rola o feed reconhece em 
 
 - Abrir com boneco acenando, "Oi, tudo bem?", logo girando ou título parado.
 - Fechar com o logo surgindo do nada sobre fundo preto.
-- O mesmo movimento em toda transição (sempre whoosh, sempre zoom, sempre pop).
+- Zoom, pop e escala crescendo em todo passo para fingir ritmo; cada passo precisa de informação nova, não de pulsação.
 - Legenda branca com uma palavra amarela e um emoji em toda frase.
 - Fundo genérico de "tecnologia": circuito, globo, código verde caindo.
 - Frase de efeito vazia ("O futuro é agora", "Não é só X, é Y").
