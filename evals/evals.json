@@ -121,6 +121,22 @@
         "Não promove notícia velha ou fraca a 'em alta' nem inventa tendência",
         "Oferece temas que não envelhecem, tirados das perguntas do autocompletar (--tipos sugestao,sugestao-yt) e do calendário do nicho, e o AskUserQuestion para escolher ou dizer o tema"
       ]
+    },
+    {
+      "id": 9,
+      "name": "conceitos-sem-repetir-estetica",
+      "prompt": "Me dá 5 conceitos de short pro canal dark sobre o que acontece quando você digita um endereço no navegador. (CENÁRIO DE TESTE: os 3 últimos vídeos do histórico têm Estética \"formas abstratas com brilho\" e Formas recorrentes \"cubos emissivos, círculos com pontos, prédio com brilho\".)",
+      "files": [],
+      "expected_behavior": [
+        "Usa o modo só ganchos/ideias: lê o histórico, references/conceitos.md e references/esteticas.md",
+        "Entrega 5 conceitos com 5 estéticas diferentes entre si, cada uma nomeada",
+        "Nenhum dos 5 conceitos usa a estética 'formas abstratas com brilho' (nem o mesmo visual com outro nome, como neon escuro com bloom)",
+        "Nenhum conceito depende de 2 ou mais das formas cubos emissivos, círculos com pontos e prédio com brilho",
+        "Pelo menos 1 conceito vem marcado '(ousado)' com uma estética que não aparece no histórico",
+        "Se algum conceito usa visual limpo/abstrato, ele vem marcado '(seguro)' com o público em uma linha; como essa estética está nos 3 últimos, não deveria aparecer",
+        "Passa os 5 conceitos e as últimas 5 linhas do histórico ao agente diretor-de-arte-original antes de mostrar, e troca os vetados",
+        "Mostra as notas de surpresa, clareza sem som, envio e aderência, recomenda um e espera o usuário escolher"
+      ]
     }
   ]
 }

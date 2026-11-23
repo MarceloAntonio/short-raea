@@ -126,7 +126,7 @@ function estimar(texto: string, mp3: string): Palavra[] {
 
 const config = voz.provedor === "elevenlabs" ? voz.elevenlabs : voz.edge;
 const saida: Narracao = {};
-for (const passo of [roteiro.gancho, ...roteiro.passos]) {
+for (const passo of [roteiro.gancho, ...roteiro.passos].filter(Boolean)) {
   if (!passo.narracao) continue;
   const falado = paraVoz(passo.narracao);
   // o texto falado entra na assinatura: mudar uma pronúncia refaz só os passos que a usam

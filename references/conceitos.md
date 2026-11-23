@@ -35,6 +35,7 @@ Eles fazem o vídeo parecer igual a mil outros, e quem rola o feed reconhece em 
 - Legenda branca com uma palavra amarela e um emoji em toda frase.
 - Fundo genérico de "tecnologia": circuito, globo, código verde caindo.
 - Frase de efeito vazia ("O futuro é agora", "Não é só X, é Y").
+- Repetir as mesmas formas abstratas (cubos, círculos com pontos, prédios com brilho) em vídeos seguidos. A estética de cada vídeo vem de `references/esteticas.md` e não repete a dos 3 últimos.
 
 ## O que já foi feito
 

@@ -29,16 +29,17 @@ Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase ind
 |---|---|
 | `marcas/<marca>.md` | Fase 1, se existir: cores, fontes, logos, fatos aprovados, CTA, vetos, voz |
 | `references/conceitos.md` | Fase 2: motores, formatos que puxam ação, clichês |
+| `references/esteticas.md` | Fase 2: catálogo de estéticas (cena, paleta, tipografia, câmera, trilha, para que tema serve, o que é difícil no raea) |
 | `references/roteiro.md` | Fase 3 e modo crítica: gancho em 3 camadas, as 3 falhas, estruturas de envio |
 | `references/pautas.md` | Modo Pautas e fase 1 sem tema: perguntas, coleta, caçador, cético e juiz, o que entregar |
 | `references/nichos/<nicho>.md` | Modo Pautas: fontes, termos, calendário fixo e o que evitar de cada nicho (`_modelo.md` para criar outro) |
 | `references/debate.md` | Fase 3, modo crítica, debate rápido e fase 5: como disparar os agentes, rodadas, pasta do debate |
-| `agents/` | Prompts dos agentes passados à ferramenta `Agent`: os 6 do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz) e os 2 das pautas (caçador de pautas, cético de pauta) |
+| `agents/` | Prompts dos agentes passados à ferramenta `Agent`: os 6 do debate (roteirista, crítico, defensor, rolador-de-feed, especialista-chato, juiz), o diretor-de-arte-original da fase 2 e os 2 das pautas (caçador de pautas, cético de pauta) |
 | `references/tecnico.md` | Fase 4: chaves, voz, sons, armadilhas do raea, verificação, entrega, idiomas |
 | `references/publicacao.md` | Fase 5 e modo insights: capa, hashtags, insights e diagnóstico |
 | `references/legenda.md` | Fase 5 e modo legenda: tom brasileiro, estrutura, checklist |
 | `references/plataformas.md` | Fase 4 e fase 5, se o vídeo sai também no TikTok ou no YouTube Shorts: zonas seguras, duração, título, hashtags, áudio |
-| `historico/HISTORICO-SHORTS.md` | Fase 2 e fase 5: um vídeo por linha, com os resultados (fora do git; o formato está em `HISTORICO-SHORTS.exemplo.md`) |
+| `historico/HISTORICO-SHORTS.md` | Fase 2 e fase 5: um vídeo por linha, com estética, formas recorrentes e resultados (fora do git; o formato está em `HISTORICO-SHORTS.exemplo.md`) |
 | `scripts/` | Pautas (`pautas.py`), fases 4 e 5: voz, sons, `emo()`, estilo, verificação e lint de texto (lista em `references/tecnico.md`, seção 10) |
 
 ## Modos (escolha pelo pedido)
@@ -61,13 +62,13 @@ Copie esta lista no `plan.org` (ou na lista de tarefas) e marque cada item ao te
 
 ```
 - [ ] 1. Grill me respondido (7 itens) e marca carregada; sem tema, pautas pesquisadas, uma escolhida e os fatos dela confirmados um a um
-- [ ] 2. 5 conceitos com nota; usuário escolheu um
+- [ ] 2. 5 conceitos com 5 estéticas diferentes (1 "(ousado)"), passados pelo diretor-de-arte-original; usuário escolheu um
 - [ ] 3. Debate do roteiro (até 2 rodadas) salvo em debate/; roteiro final, PARO/PASSO e veredito mostrados; usuário aprovou
 - [ ] 4. roteiro.json com deixas por palavra; checagem de deixas sem faltas
 - [ ] 5. Voz, sons, cenas, legendas e CTA no raea
 - [ ] 6. Verificação medida OK e rolador de feed com os quadros do MP4 (senão, volte ao 5)
 - [ ] 7. Cópia AAC, capa e legenda entregues
-- [ ] 8. Histórico e AGENTS.md atualizados; intermediários apagados
+- [ ] 8. Histórico (com Estética e Formas recorrentes) e AGENTS.md atualizados; intermediários apagados
 ```
 
 ## Fase 1. Perguntar
@@ -93,8 +94,12 @@ Ao fim, ofereça salvar as respostas estáveis (cores, fontes, fatos, CTA, vetos
 ## Fase 2. Conceito, sem repetir o anterior
 
 1. Leia o histórico (se não existir, copie `historico/HISTORICO-SHORTS.exemplo.md` e apague a linha fictícia). O vídeo novo difere do último em pelo menos 4 das 7 colunas: conceito, formato, câmera, gancho, final, paleta e trilha. Quem segue a página vê o mesmo vídeo com outro texto e passa direto. Se a marca tem uma série em andamento, o conceito pode continuar a série, mas a câmera, o gancho e o final mudam. Use a **média da conta** (pulados, tempo médio, envios, salvamentos, seguidores dos vídeos da mesma marca no histórico) como referência: o conceito novo ataca a métrica que mais ficou abaixo dela, e não um número absoluto de outro perfil.
-2. Leia `references/conceitos.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também). Para cada um: o gancho do primeiro 1,5 s nas 3 camadas (imagem, fala, texto na tela), a imagem central, a virada, o momento de envio e o final.
-3. Dê nota de 1 a 5 em **surpresa** (já vi isso mil vezes?), **clareza sem som** (um leigo entende no mudo?), **envio** (alguém manda isso para uma pessoa específica?) e **aderência ao tema**. Recomende um em duas linhas e **espere o usuário escolher**.
+2. **Variedade visual**, além da regra das 4 de 7: a estética do vídeo novo não pode ter aparecido em nenhum dos 3 últimos vídeos do histórico (coluna Estética), e no máximo 1 forma recorrente desses 3 vídeos pode voltar (coluna Formas recorrentes). Conteúdo bom com a mesma cara em todo vídeo vira um vídeo só para quem segue a página.
+3. Leia `references/conceitos.md` e `references/esteticas.md` e gere **5 conceitos**, cada um com um motor diferente (invente motores novos também) e **5 estéticas diferentes entre si**. Para cada um: a estética, o gancho do primeiro 1,5 s nas 3 camadas (imagem, fala, texto na tela), a imagem central, a virada, o momento de envio e o final.
+   - Pelo menos 1 conceito é **"(ousado)"**: uma estética que ainda não aparece no histórico e é mais arriscada de fazer.
+   - Visual limpo/abstrato (formas geométricas, partículas, prédios brilhando) pode, mas como escolha: marque **"(seguro)"** e diga em uma linha para que público ele funciona melhor.
+4. **Diretor de arte** (`agents/diretor-de-arte-original.md`, como em `references/debate.md`): passe a ele os 5 conceitos e as últimas 5 linhas do histórico. Ele veta o conceito que repete estética recente ou depende das formas recorrentes e sugere uma estética do catálogo para cada aprovado. Troque os vetados antes de mostrar.
+5. Dê nota de 1 a 5 em **surpresa** (já vi isso mil vezes?), **clareza sem som** (um leigo entende no mudo?), **envio** (alguém manda isso para uma pessoa específica?) e **aderência ao tema**. Mostre a estética e as marcas (ousado)/(seguro) de cada um, recomende um em duas linhas e **espere o usuário escolher**.
 
 ## Fase 3. Roteiro
 
