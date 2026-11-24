@@ -15,6 +15,7 @@ Um motor é a ideia que move o vídeo inteiro. Bons motores criam uma pergunta n
 - **O erro é a mensagem**: a tela trava, corrompe ou cai de verdade no meio do vídeo, de propósito.
 - **Metáfora física única**: balança, dominó, jenga, represa, castelo de cartas; um objeto carrega o argumento inteiro.
 - **Ponto de vista inesperado**: a cena vista pelo ladrão, pela impressora, pelo cliente do cliente.
+- **Construindo do zero (Mas → Então)**: cada problema pede uma peça nova até a coisa funcionar inteira (como surgiu o elevador, como um site vai pro ar). Detalhes em `references/construindo.md`.
 - **Comparação absurda**: o problema técnico explicado como algo do dia a dia (backup como estepe, firewall como porteiro).
 
 ## Formatos que puxam ação (combine com um motor)

@@ -9,7 +9,20 @@ Você faz vídeos verticais 1080x1920 que prendem nos primeiros segundos, dão u
 
 Nenhum vídeo tem viralização garantida. Fale do que *tende* a funcionar e por quê, e nunca prometa número.
 
+## Antes de tudo: a skill está atualizada?
+
+Na primeira chamada da conversa, antes de qualquer outra coisa, confira se há versão nova da skill no GitHub:
+
+```
+git -C <pasta desta skill> fetch --quiet origin && git -C <pasta desta skill> rev-list --count HEAD..@{u}
+```
+
+- **0**: siga sem comentar.
+- **Maior que 0**: pergunte com `AskUserQuestion` ("A skill short-raea tem N atualizações no GitHub. Atualizar agora?", opções "Atualizar (Recomendado)" e "Agora não"). Esta pergunta vale mesmo nos pedidos "sem me perguntar", porque o usuário pediu para ser consultado. Se ele aceitar, rode `git -C <pasta> pull --ff-only` e releia esta SKILL.md antes de continuar; se o pull falhar (mudança local, histórico divergente), diga o erro em uma linha e siga com a versão atual.
+- **Sem rede ou sem `git`**: diga em uma linha que não deu para conferir e siga.
+
 ## Índice
+0. Antes de tudo: a skill está atualizada?
 1. Arquivos desta skill
 2. Modos (escolha pelo pedido)
 3. Progresso do vídeo completo
@@ -31,6 +44,7 @@ Todos os caminhos são relativos à pasta da skill. Leia cada um só na fase ind
 | `references/conceitos.md` | Fase 2: motores, formatos que puxam ação, clichês |
 | `references/esteticas.md` | Fase 2: catálogo de estéticas (cena, paleta, tipografia, câmera, trilha, para que tema serve, o que é difícil no raea) |
 | `references/movimento.md` | Fase 2 (como cada estética se mexe) e fase 4: o que conta como mudança, orçamento de ênfase, vocabulário de movimentos, câmera, pipoca |
+| `references/construindo.md` | Fase 2 e fase 3, quando o tema se monta por partes: formato "Mas → Então" (problema → peça), etiquetas riscadas, câmera suave entre planos |
 | `references/roteiro.md` | Fase 3 e modo crítica: gancho em 3 camadas, as 3 falhas, estruturas de envio |
 | `references/pautas.md` | Modo Pautas e fase 1 sem tema: perguntas, coleta, caçador, cético e juiz, o que entregar |
 | `references/nichos/<nicho>.md` | Modo Pautas: fontes, termos, calendário fixo e o que evitar de cada nicho (`_modelo.md` para criar outro) |
